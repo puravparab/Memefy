@@ -45,15 +45,24 @@ INSTALLED_APPS = [
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
+
+	# django-rest-framework
+	'rest_framework',
+	# djanog-cors-headers
+	'corsheaders',
 ]
 
 MIDDLEWARE = [
 	'django.middleware.security.SecurityMiddleware',
 
-	# Whitenoise
+	# whitenoise
 	"whitenoise.middleware.WhiteNoiseMiddleware",
 
 	'django.contrib.sessions.middleware.SessionMiddleware',
+
+	# django-cors-headers
+	'corsheaders.middleware.CorsMiddleware',
+
 	'django.middleware.common.CommonMiddleware',
 	'django.middleware.csrf.CsrfViewMiddleware',
 	'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -111,6 +120,17 @@ AUTH_PASSWORD_VALIDATORS = [
 	},
 ]
 
+# CORS
+CORS_ALLOWED_ORIGINS = [
+	"http://192.168.1.103:3000",
+	"http://localhost:3000",
+	"http://127.0.0.1:3000"
+]
+
+CORS_ALLOW_METHODS = [
+	'GET',
+	'OPTIONS'
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
