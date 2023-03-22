@@ -206,4 +206,4 @@ next-env.d.ts
 
 ## MEMEFY SPECIFIC
 /other
-/api/static
+api/static/
