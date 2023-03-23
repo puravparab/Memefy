@@ -21,5 +21,4 @@ app_name = 'spotify'
 
 urlpatterns = [
 	path('', authenticate, name='spotify-auth'),
-	path('callback', callback, name='spotify-callback')
 ]
