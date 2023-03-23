@@ -6,7 +6,7 @@ import Login from '../components/Login.js'
 import styles from '../styles/home.module.css'
 
 const Home = () => {
-	const [showHome, setShowHome] = useState(true)
+	const [showHome, setShowHome] = useState(false)
 
 	return (
 		<>

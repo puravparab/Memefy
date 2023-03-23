@@ -50,6 +50,9 @@ INSTALLED_APPS = [
 	'rest_framework',
 	# djanog-cors-headers
 	'corsheaders',
+
+	# Spotify app
+	'spotify.apps.SpotifyConfig',
 ]
 
 MIDDLEWARE = [
