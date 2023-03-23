@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Head from 'next/head'
 
+import Navbar from '../components/Navbar.js'
 import Login from '../components/Login.js'
 import styles from '../styles/home.module.css'
 
@@ -26,7 +27,10 @@ const Home = () => {
 
 			<div className={styles.homeContainer}>
 				{showHome?
-					<h1>Memefy</h1> :
+					<>
+						<h1>Memefy</h1> 
+						<Navbar />
+					</>:
 					<div className={styles.homeNoAuth}>
 						<h1>Memefy</h1>
 						<Login />
