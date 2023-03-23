@@ -1,0 +1,27 @@
+.loginBtn{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 35px;
+	background-color: rgb(30, 215, 96);
+	border-radius: 18px;
+	margin: 0px 30px;
+	cursor: pointer;
+}
+.loginBtn span{
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+.loginBtn:hover{
+	background: rgb(9, 171, 67);
+	transition: 0.3s;
+}
+
+@media (max-width: 320px){
+	.loginBtn{
+		padding: 15px 12px;
+	}
+}

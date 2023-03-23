@@ -1,27 +1,16 @@
 import { useState } from 'react'
 import Head from 'next/head'
 
-import axios from 'axios';
+import Login from '../components/Login.js'
+import styles from '../styles/home.module.css'
 
 const Home = () => {
-	const [requestSuccess, setRequestSuccess] = useState(false)
-
-	const btnHandle = () => {
-		axios.get('http://192.168.1.103:8000/')
-			.then(function (res){
-				console.log(res)
-				setRequestSuccess(true)
-			})
-			.catch(function (error) {
-				console.log(error)
-				setRequestSuccess(false)
-			})
-	}
+	const [showHome, setShowHome] = useState(true)
 
 	return (
 		<>
 			<Head>
-				<title>Memefy</title>
+				<title>MemeFy</title>
 				<meta 
 					name="description" 
 					content="Create personalized memes based on you listening history"
@@ -35,9 +24,15 @@ const Home = () => {
 				/>
 			</Head>
 
-			<button onClick={btnHandle}>Yes</button>
-
-			{requestSuccess? "Success": ""}
+			<div className={styles.homeContainer}>
+				{showHome?
+					<h1>Memefy</h1> :
+					<div className={styles.homeNoAuth}>
+						<h1>Memefy</h1>
+						<Login />
+					</div>
+				}
+			</div>
 		</>
 	)
 }
