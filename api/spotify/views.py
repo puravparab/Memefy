@@ -42,7 +42,7 @@ def get_user_top_items(request, format=None):
 
 	chained_response = {"tracks": {}, "artists": {}}
 
-	# Get Top Tracks
+	# GET TOP TRACKS
 	# 1. short_term (1 month)
 	response = {}
 	response = get(BASE_URL + "tracks", headers=headers, 
@@ -65,7 +65,7 @@ def get_user_top_items(request, format=None):
 	if (response.ok): response = utils.clean_tracks_response(response.json())
 	chained_response["tracks"]["medium_term"] = response
 
-	# 2. medium_term (6 months)
+	# 3. longterm (All Time)
 	response = {}
 	response = get(BASE_URL + "tracks", headers=headers, 
 		params = {
@@ -75,5 +75,39 @@ def get_user_top_items(request, format=None):
 		})
 	if (response.ok): response = utils.clean_tracks_response(response.json())
 	chained_response["tracks"]["long_term"] = response
+
+	# GET TOP ARTISTS
+	# 1. short_term (1 month)
+	response = {}
+	response = get(BASE_URL + "artists", headers=headers, 
+		params = {
+			'limit': 50,
+			'offset': 0,
+			'time_range': 'short_term'
+		})
+	if (response.ok): response = utils.clean_artists_response(response.json())
+	chained_response["artists"]["short_term"] = response
+
+	# 2. medium_term (6 months)
+	response = {}
+	response = get(BASE_URL + "artists", headers=headers, 
+		params = {
+			'limit': 50,
+			'offset': 0,
+			'time_range': 'medium_term'
+		})
+	if (response.ok): response = utils.clean_artists_response(response.json())
+	chained_response["artists"]["medium_term"] = response
+
+	# 3. longterm (All Time)
+	response = {}
+	response = get(BASE_URL + "artists", headers=headers, 
+		params = {
+			'limit': 50,
+			'offset': 0,
+			'time_range': 'long_term'
+		})
+	if (response.ok): response = utils.clean_artists_response(response.json())
+	chained_response["artists"]["long_term"] = response
 
 	return Response(chained_response, status=status.HTTP_200_OK)
