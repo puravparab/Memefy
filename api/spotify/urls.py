@@ -21,4 +21,6 @@ app_name = 'spotify'
 
 urlpatterns = [
 	path('', authenticate, name='spotify-auth'),
+	path('user-profile', get_user_profile, name='spotify-user-profile'),
+	path('top-items', get_user_top_items, name='spotify-top-items'),
 ]
