@@ -12,9 +12,17 @@ const { publicRuntimeConfig } = getConfig();
 const TopItems = () => {
 	const router = useRouter()
 	// check if component should render
-	const [render, setRender] = useState(false) 
+	const [render, setRender] = useState(false)
+	// What items should be displayed
+	const [category, setCategory] = useState('tracks')
+	const [range, setRange] = useState('six')
 	// Store Items to be displayed
-	const [topItems, setTopItems] = useState('')
+	const [tracks1, setTracks1] = useState('')
+	const [tracks2, setTracks2] = useState('')
+	const [tracks3, setTracks3] = useState('')
+	const [artists1, setArtists1] = useState('')
+	const [artists2, setArtists2] = useState('')
+	const [artists3, setArtists3] = useState('')
 
 	useEffect(()=>{
 		get_top_items()
@@ -57,14 +65,50 @@ const TopItems = () => {
 
 	// Parse through data and create components for all permutations of lists
 	const renderList = (data) => {
-		const render = data.artists.medium_term.map((artist, id) => {
+		// Top tracks 
+		// Last Month
+		let render = data.artists.short_term.map((artist, id) => {
 			return (
 				<div className={styles.topItemCard} key={id}>
 					<Image src={artist.image} width={100} height={100} alt={artist.name + " image"}/>
 				</div>
 			)
 		})
-		setTopItems(render)
+		setTracks1(render)
+
+		// Last six months
+		render = data.artists.medium_term.map((artist, id) => {
+			return (
+				<div className={styles.topItemCard} key={id}>
+					<Image src={artist.image} width={100} height={100} alt={artist.name + " image"}/>
+				</div>
+			)
+		})
+		setTracks2(render)
+
+		// All Time
+		render = data.artists.long_term.map((artist, id) => {
+			return (
+				<div className={styles.topItemCard} key={id}>
+					<Image src={artist.image} width={100} height={100} alt={artist.name + " image"}/>
+				</div>
+			)
+		})
+		setTracks3(render)
+
+		// Top Artists
+	}
+
+	// Change categories
+	const categoryChange = (category) => {
+		if (category == 'tracks'){setCategory(category)}
+		else {setCategory('artists')}
+	}
+	// Change range
+	const rangeChange = (r) => {
+		if (r == 'one'){setRange(r)}
+		else if (r == 'six'){setRange(r)}
+		else {setRange(r)}
 	}
 
 	return (
@@ -73,18 +117,30 @@ const TopItems = () => {
 				<>
 					<div className={styles.topItemsOptions}>
 						<div className={styles.itemsTypeRow}>
-							<div className={styles.itr}><span>Tracks</span></div>
-							<div className={styles.itr}><span>Artists</span></div>
+							<div className={styles.itr} onClick={()=>{categoryChange('tracks')}}><span>Tracks</span></div>
+							<div className={styles.itr} onClick={()=>{categoryChange('artists')}}><span>Artists</span></div>
 						</div>
 						<div className={styles.itemsRangeRow}>
-							<div className={styles.itrr}><span>Last Month</span></div>
-							<div className={styles.itrr}><span>Last 6 Months</span></div>
-							<div className={styles.itrr}><span>All Time</span></div>
+							<div className={styles.itrr}  onClick={()=>{rangeChange('one')}}><span>Last Month</span></div>
+							<div className={styles.itrr}  onClick={()=>{rangeChange('six')}}><span>Last 6 Months</span></div>
+							<div className={styles.itrr}  onClick={()=>{rangeChange('all')}}><span>All Time</span></div>
 						</div>
 					</div>
 
 					<div className={styles.topItemsList}>
-						{topItems}
+						{category == 'tracks'?
+							<>
+								{range == 'one' && tracks1}
+								{range == 'six' && tracks2}
+								{range == 'all' && tracks3}
+							</>
+							:
+							<>
+								{range == 'one' && artists1}
+								{range == 'six' && artists2}
+								{range == 'all' && artists3}
+							</>
+						}
 					</div>
 					
 				</>
