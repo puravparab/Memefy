@@ -9,7 +9,7 @@ import styles from '../styles/login.module.css'
 
 const Login = () => {
 	const router = useRouter()
-	const url = publicRuntimeConfig.AUTH_URL
+	const url = publicRuntimeConfig.SERVER_URL + "api/spotify"
 
 	const handleClick = () => {
 		axios.get(url)

@@ -31,8 +31,8 @@ def get_user_profile(request, format=None):
 
 # Get top tracks/artists for long_term, medium_term and short_term
 @api_view(['GET'])
-def get_user_top_items(request, format=None):
-	access_token = request.data.get('access_token')
+def get_user_top_items(request, access_token, format=None):
+	access_token = access_token
 	
 	BASE_URL = "https://api.spotify.com/v1/me/top/"
 	headers = {

@@ -5,6 +5,7 @@ import { parse } from 'cookie';
 
 import Navbar from '../components/Navbar.js'
 import Login from '../components/Login.js'
+import TopItems from '../components/TopItems.js'
 import styles from '../styles/home.module.css'
 
 const Home = () => {
@@ -49,6 +50,7 @@ const Home = () => {
 					<>
 						<h1>Memefy</h1> 
 						<Navbar />
+						<TopItems />
 					</>:
 					<div className={styles.homeNoAuth}>
 						<h1>Memefy</h1>

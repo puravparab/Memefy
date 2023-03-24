@@ -5,6 +5,6 @@ module.exports = {
 	},
 	publicRuntimeConfig: {
 		REDIRECT_URI:  process.env.REDIRECT_URI,
-		AUTH_URL:  process.env.AUTH_URL,
+		SERVER_URL:  process.env.SERVER_URL,
 	}
 }

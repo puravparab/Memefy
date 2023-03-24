@@ -39,7 +39,6 @@ export default function handler(req, res) {
 				serialize('refresh_token', refresh_token, options)
 			];
 			res.setHeader('Set-Cookie', cookieStrings);
-			// return res.json({res: "success"})
 			return res.redirect(307, '/')
 		})
 		.catch((err) => {
