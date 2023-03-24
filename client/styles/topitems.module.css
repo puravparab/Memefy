@@ -3,4 +3,76 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
+	width: 100%;
+	margin: 40px 0px 0px 0px;
+}
+
+
+/* TOP ITEMS OPTIONS */
+.topItemsOptions{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	margin: 10px 0px;
+}
+
+.itemsTypeRow{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+.itemsTypeRow .itr{
+	display: flex;
+	flex-direction: column;
+	border: 1px solid white;
+	padding: 10px 12px;
+	cursor: pointer;
+}
+.itemsTypeRow .itr span{
+	color: white;
+	font-size: 25px;
+	text-align: center;
+}
+
+.itemsRangeRow{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+.itemsRangeRow .itrr{
+	display: flex;
+	flex-direction: column;
+	border: 1px solid white;
+	padding: 10px;
+	cursor: pointer;
+}
+.itemsRangeRow .itrr span{
+	color: white;
+	font-size: 20px;
+	text-align: center;
+}
+
+@media (max-width: 400px){
+	.itemsRangeRow .itrr{
+		padding: 10px 10px;
+	}
+	.itemsRangeRow .itrr span{
+		font-size: 15px;
+	}
+}
+
+/* TOP ITEMS LIST */
+.topItemsContainer .topItemsList{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100%;
+	margin: 20px 0px;
 }

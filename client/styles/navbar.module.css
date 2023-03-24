@@ -4,7 +4,7 @@
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	gap: 10px 40px;
+	gap: 15px 40px;
 	padding: 10px 5px;
 	border-top: 1px solid rgb(30, 215, 96);
 	border-bottom: 1px solid rgb(30, 215, 96);
@@ -14,8 +14,19 @@
 	font-size: 23px;
 	font-weight: 500;
 	cursor: pointer;
+	text-align: center;
+	line-height: 1.6rem;
 }
 .navbar a:hover{
 	color: white;
 	transition: 0.2s;
+}
+
+@media (max-width: 320px){
+	.navbar{
+		gap: 10px 40px;
+	}
+	.navbar a{
+		font-size: 20px;
+	}
 }

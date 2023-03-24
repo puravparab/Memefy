@@ -6,5 +6,8 @@ module.exports = {
 	publicRuntimeConfig: {
 		REDIRECT_URI:  process.env.REDIRECT_URI,
 		SERVER_URL:  process.env.SERVER_URL,
+	},
+	images: {
+		domains: ['i.scdn.co']
 	}
 }
