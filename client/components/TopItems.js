@@ -13,9 +13,14 @@ const TopItems = () => {
 	const router = useRouter()
 	// check if component should render
 	const [render, setRender] = useState(false)
+
 	// What items should be displayed
 	const [category, setCategory] = useState('tracks')
 	const [range, setRange] = useState('six')
+
+	// Set display type
+	const [displayList, setDisplayList] = useState(false)
+
 	// Store Items to be displayed
 	const [tracks1, setTracks1] = useState('')
 	const [tracks2, setTracks2] = useState('')
@@ -156,6 +161,11 @@ const TopItems = () => {
 		else if (r == 'six'){setRange(r)}
 		else {setRange(r)}
 	}
+	// Change display
+	const handleDisplayChange = () => {
+		if (displayList){setDisplayList(false)}
+		else{setDisplayList(true)}
+	}
 
 	return (
 		<div className={styles.topItemsContainer}>
@@ -171,23 +181,36 @@ const TopItems = () => {
 							<div className={range == 'six'? styles.itrrActive : styles.itrr} onClick={()=>{rangeChange('six')}}><span>Last 6 Months</span></div>
 							<div className={range == 'all'? styles.itrrActive : styles.itrr} onClick={()=>{rangeChange('all')}}><span>All Time</span></div>
 						</div>
+						<div className={styles.displayTypeRow}>
+							<div className={displayList? styles.displayType : styles.displayTypeActive} 
+								onClick={handleDisplayChange}>
+								<span>Collage</span>
+							</div>
+							<div className={displayList? styles.displayTypeActive : styles.displayType} 
+								onClick={handleDisplayChange}>
+								<span>List</span>
+							</div>
+						</div>
 					</div>
 
-					<div className={styles.topItemsList}>
-						{category == 'tracks'?
-							<>
-								{range == 'one' && artists1}
-								{range == 'six' && artists2}
-								{range == 'all' && artists3}
-							</>
-							:
-							<>
-								{range == 'one' && tracks1}
-								{range == 'six' && tracks2}
-								{range == 'all' && tracks3}
-							</>
-						}
-					</div>
+					{displayList?
+						"":
+						<div className={styles.topItemsList}>
+							{category == 'tracks'?
+								<>
+									{range == 'one' && artists1}
+									{range == 'six' && artists2}
+									{range == 'all' && artists3}
+								</>
+								:
+								<>
+									{range == 'one' && tracks1}
+									{range == 'six' && tracks2}
+									{range == 'all' && tracks3}
+								</>
+							}
+						</div>
+					}
 				</>
 				: ""
 			}

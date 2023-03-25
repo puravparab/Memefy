@@ -17,6 +17,7 @@
 	margin: 10px 0px;
 }
 
+
 /* TYPES/CATEGORIES */
 .itemsTypeRow{
 	display: flex;
@@ -55,6 +56,7 @@
 	font-weight: bold;
 	text-align: center;
 }
+
 
 /* RANGE */
 .itemsRangeRow{
@@ -103,6 +105,38 @@
 		font-size: 15px;
 	}
 }
+
+
+/* Display Type */
+.displayTypeRow{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 0px 20px;
+	width: 100%;
+	margin: 10px 0px 0px 0px;
+}
+.displayTypeRow .displayType{
+	display: flex;
+	cursor: pointer;
+}
+.displayTypeRow .displayType span{
+	color: white;
+	font-size: 20px;
+}
+.displayTypeRow .displayType span:hover{
+	color: rgb(30, 215, 96);
+}
+.displayTypeRow .displayTypeActive{
+	display: flex;
+	cursor: pointer;
+}
+.displayTypeRow .displayTypeActive span{
+	color: rgb(30, 215, 96);
+	font-size: 20px;
+}
+
 
 /* TOP ITEMS LIST */
 .topItemsContainer .topItemsList{
