@@ -175,7 +175,6 @@ const TopItems = () => {
 			)
 		})
 		setTracks1(render)
-
 		render = data.tracks.short_term.map((track, id) => {
 			// Iterate through artists of this track
 			let artists = track.artists.map((artist, j) => {
@@ -211,7 +210,6 @@ const TopItems = () => {
 			)
 		})
 		setTracks2(render)
-		
 		render = data.tracks.medium_term.map((track, id) => {
 			// Iterate through artists of this track
 			let artists = track.artists.map((artist, j) => {
@@ -247,7 +245,6 @@ const TopItems = () => {
 			)
 		})
 		setTracks3(render)
-
 		render = data.tracks.long_term.map((track, id) => {
 			// Iterate through artists of this track
 			let artists = track.artists.map((artist, j) => {
