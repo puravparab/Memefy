@@ -140,15 +140,15 @@ const TopItems = () => {
 				else{return(<>, {artist.name} </>)}
 			})
 			return (
-				<div className={styles.artistCard} key={id}>
-					<div className={styles.artistImg}>
-						<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}
+				<div className={styles.trackCard} key={id}>
+					<div className={styles.trackImg}>
+						<Image src={track.image} width={100} height={100} alt={track.name + " image"}
 							onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}
 						/>
 					</div>
-					<div className={styles.artistCardContent}>
-						<div className={styles.artistRank}>{id + 1}.</div>
-						<div className={styles.artistDetails}>
+					<div className={styles.trackCardContent}>
+						<div className={styles.trackRank}>{id + 1}.</div>
+						<div className={styles.trackDetails}>
 							<h4>{track.name}</h4>
 							<h5>{artists}</h5>
 						</div>
@@ -176,15 +176,15 @@ const TopItems = () => {
 				else{return(<>, {artist.name} </>)}
 			})
 			return (
-				<div className={styles.artistCard} key={id}>
-					<div className={styles.artistImg}>
-						<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}
+				<div className={styles.trackCard} key={id}>
+					<div className={styles.trackImg}>
+						<Image src={track.image} width={100} height={100} alt={track.name + " image"}
 							onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}
 						/>
 					</div>
-					<div className={styles.artistCardContent}>
-						<div className={styles.artistRank}>{id + 1}.</div>
-						<div className={styles.artistDetails}>
+					<div className={styles.trackCardContent}>
+						<div className={styles.trackRank}>{id + 1}.</div>
+						<div className={styles.trackDetails}>
 							<h4>{track.name}</h4>
 							<h5>{artists}</h5>
 						</div>
@@ -212,15 +212,15 @@ const TopItems = () => {
 				else{return(<>, {artist.name} </>)}
 			})
 			return (
-				<div className={styles.artistCard} key={id}>
-					<div className={styles.artistImg}>
-						<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}
+				<div className={styles.trackCard} key={id}>
+					<div className={styles.trackImg}>
+						<Image src={track.image} width={100} height={100} alt={track.name + " image"}
 							onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}
 						/>
 					</div>
-					<div className={styles.artistCardContent}>
-						<div className={styles.artistRank}>{id + 1}.</div>
-						<div className={styles.artistDetails}>
+					<div className={styles.trackCardContent}>
+						<div className={styles.trackRank}>{id + 1}.</div>
+						<div className={styles.trackDetails}>
 							<h4>{track.name}</h4>
 							<h5>{artists}</h5>
 						</div>
