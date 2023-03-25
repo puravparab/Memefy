@@ -63,6 +63,20 @@ const TopItems = () => {
 		}
 	}
 
+	// Audio preview
+	const [audio, setAudio] = useState(new Audio());
+
+	const playAudio = (preview_url) => {
+		audio.pause();
+		if (preview_url){
+			audio.src = preview_url;
+			audio.play();
+		}
+	}
+	const stopAudio = () => {
+		audio.pause();
+	};
+
 	// Parse through data and create components for all permutations of lists
 	const renderList = (data) => {
 		// Top tracks 
@@ -97,6 +111,38 @@ const TopItems = () => {
 		setTracks3(render)
 
 		// Top Artists
+		// Last Month
+		render = data.tracks.short_term.map((track, id) => {
+			return (
+				<div className={styles.topItemCard} key={id} 
+					onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}>
+					<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}/>
+				</div>
+			)
+		})
+		setArtists1(render)
+
+		// Last six months
+		render = data.tracks.medium_term.map((track, id) => {
+			return (
+				<div className={styles.topItemCard} key={id} 
+					onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}>
+					<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}/>
+				</div>
+			)
+		})
+		setArtists2(render)
+
+		// All Time
+		render = data.tracks.long_term.map((track, id) => {
+			return (
+				<div className={styles.topItemCard} key={id} 
+					onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}>
+					<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}/>
+				</div>
+			)
+		})
+		setArtists3(render)
 	}
 
 	// Change categories
@@ -117,32 +163,31 @@ const TopItems = () => {
 				<>
 					<div className={styles.topItemsOptions}>
 						<div className={styles.itemsTypeRow}>
-							<div className={styles.itr} onClick={()=>{categoryChange('tracks')}}><span>Tracks</span></div>
-							<div className={styles.itr} onClick={()=>{categoryChange('artists')}}><span>Artists</span></div>
+							<div className={category == 'tracks'? styles.itrActive : styles.itr} onClick={()=>{categoryChange('tracks')}}><span>Tracks</span></div>
+							<div className={category == 'artists'? styles.itrActive : styles.itr} onClick={()=>{categoryChange('artists')}}><span>Artists</span></div>
 						</div>
 						<div className={styles.itemsRangeRow}>
-							<div className={styles.itrr}  onClick={()=>{rangeChange('one')}}><span>Last Month</span></div>
-							<div className={styles.itrr}  onClick={()=>{rangeChange('six')}}><span>Last 6 Months</span></div>
-							<div className={styles.itrr}  onClick={()=>{rangeChange('all')}}><span>All Time</span></div>
+							<div className={range == 'one'? styles.itrrActive : styles.itrr} onClick={()=>{rangeChange('one')}}><span>Last Month</span></div>
+							<div className={range == 'six'? styles.itrrActive : styles.itrr} onClick={()=>{rangeChange('six')}}><span>Last 6 Months</span></div>
+							<div className={range == 'all'? styles.itrrActive : styles.itrr} onClick={()=>{rangeChange('all')}}><span>All Time</span></div>
 						</div>
 					</div>
 
 					<div className={styles.topItemsList}>
 						{category == 'tracks'?
 							<>
-								{range == 'one' && tracks1}
-								{range == 'six' && tracks2}
-								{range == 'all' && tracks3}
-							</>
-							:
-							<>
 								{range == 'one' && artists1}
 								{range == 'six' && artists2}
 								{range == 'all' && artists3}
 							</>
+							:
+							<>
+								{range == 'one' && tracks1}
+								{range == 'six' && tracks2}
+								{range == 'all' && tracks3}
+							</>
 						}
 					</div>
-					
 				</>
 				: ""
 			}

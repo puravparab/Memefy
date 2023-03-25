@@ -7,7 +7,7 @@ const Navbar = () => {
 			<Link href='/'>Top</Link>
 			<Link href='/iceberg'>Iceberg</Link>
 			<Link href='/list'>List</Link>
-			<Link href='/innercircle'>Inner Circle</Link>
+			<Link href='/innercircle'>Inner circle</Link>
 			<Link href='/other'>Templates</Link>
 		</div>
 	)
