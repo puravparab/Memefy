@@ -139,7 +139,7 @@
 
 
 /* TOP ITEMS LIST */
-.topItemsContainer .topItemsList{
+.topItemsContainer .topItemsCollage{
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -159,4 +159,105 @@
 }
 .topItemCard:hover{
 	filter: blur(0.7px);
+}
+
+/* List */
+.topItemsContainer .topItemsList{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 20px 20px;
+	width: 100%;
+	margin: 20px 0px;
+}
+.artistCard{
+	display: flex;
+	flex-direction: row;
+	border: 1px solid white;
+	width: 350px;
+}
+.artistCard:hover{
+	background: rgb(44,44,44);
+	transition: 0.1s;
+	border: 1px solid rgb(30, 215, 96);
+}
+
+.artistCard .artistImg{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	border: 2px solid white;
+} 
+.artistCard .artistImg:hover{
+	border: 2px solid rgb(30, 215, 96);
+}
+
+.artistCardContent{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	padding: 10px 5px;
+	width: 100%;
+	height: 100%;
+}
+.artistCardContent .artistRank{
+	display: flex;
+	flex-direction: column;
+	color: white;
+	font-size: 17px;
+	font-weight: bold;
+	padding: 0px 10px;
+}
+.artistCardContent .artistDetails{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+.artistCardContent .artistDetails h4{
+	font-size: 16px;
+	font-weight: bold;
+}
+.artistCardContent .artistDetails h5{
+	font-size: 13px;
+	font-weight: 400;
+	color: rgb(231,231,231);
+	padding: 5px 0px 0px 0px;
+}
+
+@media (max-width: 400px){
+	.topItemsContainer .topItemsList{
+		justify-content: flex-start;
+	}
+	.artistCard{
+		width: 100%;
+	}
+	.artistCardContent{
+		padding: 5px 5px;
+	}
+	.artistCardContent .artistRank{
+		font-size: 14px;
+	}
+	.artistCardContent .artistDetails h4{
+		font-size: 14px;
+	}
+	.artistCardContent .artistDetails h5{
+		font-size: 12px;
+	}
+}
+@media (max-width: 300px){
+	.artistCardContent .artistRank{
+		font-size: 12px;
+	}
+	.artistCardContent .artistDetails h4{
+		font-size: 12px;
+	}
+	.artistCardContent .artistDetails h5{
+		font-size: 11px;
+		padding: 0px;
+	}
 }

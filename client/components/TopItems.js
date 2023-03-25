@@ -23,11 +23,18 @@ const TopItems = () => {
 
 	// Store Items to be displayed
 	const [tracks1, setTracks1] = useState('')
+	const [tracks1List, setTracks1List] = useState('')
 	const [tracks2, setTracks2] = useState('')
+	const [tracks2List, setTracks2List] = useState('')
 	const [tracks3, setTracks3] = useState('')
+	const [tracks3List, setTracks3List] = useState('')
+
 	const [artists1, setArtists1] = useState('')
+	const [artists1List, setArtists1List] = useState('')
 	const [artists2, setArtists2] = useState('')
+	const [artists2List, setArtists2List] = useState('')
 	const [artists3, setArtists3] = useState('')
+	const [artists3List, setArtists3List] = useState('')
 
 	useEffect(()=>{
 		get_top_items()
@@ -84,7 +91,7 @@ const TopItems = () => {
 
 	// Parse through data and create components for all permutations of lists
 	const renderList = (data) => {
-		// Top tracks 
+		// TOP ARTISTS
 		// Last Month
 		let render = data.artists.short_term.map((artist, id) => {
 			return (
@@ -93,8 +100,7 @@ const TopItems = () => {
 				</div>
 			)
 		})
-		setTracks1(render)
-
+		setArtists1(render)
 		// Last six months
 		render = data.artists.medium_term.map((artist, id) => {
 			return (
@@ -103,7 +109,7 @@ const TopItems = () => {
 				</div>
 			)
 		})
-		setTracks2(render)
+		setArtists2(render)
 
 		// All Time
 		render = data.artists.long_term.map((artist, id) => {
@@ -113,9 +119,9 @@ const TopItems = () => {
 				</div>
 			)
 		})
-		setTracks3(render)
+		setArtists3(render)
 
-		// Top Artists
+		// TOP TRACKS
 		// Last Month
 		render = data.tracks.short_term.map((track, id) => {
 			return (
@@ -125,7 +131,32 @@ const TopItems = () => {
 				</div>
 			)
 		})
-		setArtists1(render)
+		setTracks1(render)
+
+		render = data.tracks.short_term.map((track, id) => {
+			// Iterate through artists of this track
+			let artists = track.artists.map((artist, j) => {
+				if (j == 0){return (<>{artist.name}</>)}
+				else{return(<>, {artist.name} </>)}
+			})
+			return (
+				<div className={styles.artistCard} key={id}>
+					<div className={styles.artistImg}>
+						<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}
+							onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}
+						/>
+					</div>
+					<div className={styles.artistCardContent}>
+						<div className={styles.artistRank}>{id + 1}.</div>
+						<div className={styles.artistDetails}>
+							<h4>{track.name}</h4>
+							<h5>{artists}</h5>
+						</div>
+					</div>
+				</div>
+			)
+		})
+		setTracks1List(render)
 
 		// Last six months
 		render = data.tracks.medium_term.map((track, id) => {
@@ -136,7 +167,32 @@ const TopItems = () => {
 				</div>
 			)
 		})
-		setArtists2(render)
+		setTracks2(render)
+		
+		render = data.tracks.medium_term.map((track, id) => {
+			// Iterate through artists of this track
+			let artists = track.artists.map((artist, j) => {
+				if (j == 0){return (<>{artist.name}</>)}
+				else{return(<>, {artist.name} </>)}
+			})
+			return (
+				<div className={styles.artistCard} key={id}>
+					<div className={styles.artistImg}>
+						<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}
+							onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}
+						/>
+					</div>
+					<div className={styles.artistCardContent}>
+						<div className={styles.artistRank}>{id + 1}.</div>
+						<div className={styles.artistDetails}>
+							<h4>{track.name}</h4>
+							<h5>{artists}</h5>
+						</div>
+					</div>
+				</div>
+			)
+		})
+		setTracks2List(render)
 
 		// All Time
 		render = data.tracks.long_term.map((track, id) => {
@@ -147,13 +203,38 @@ const TopItems = () => {
 				</div>
 			)
 		})
-		setArtists3(render)
+		setTracks3(render)
+
+		render = data.tracks.long_term.map((track, id) => {
+			// Iterate through artists of this track
+			let artists = track.artists.map((artist, j) => {
+				if (j == 0){return (<>{artist.name}</>)}
+				else{return(<>, {artist.name} </>)}
+			})
+			return (
+				<div className={styles.artistCard} key={id}>
+					<div className={styles.artistImg}>
+						<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}
+							onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}
+						/>
+					</div>
+					<div className={styles.artistCardContent}>
+						<div className={styles.artistRank}>{id + 1}.</div>
+						<div className={styles.artistDetails}>
+							<h4>{track.name}</h4>
+							<h5>{artists}</h5>
+						</div>
+					</div>
+				</div>
+			)
+		})
+		setTracks3List(render)
 	}
 
 	// Change categories
-	const categoryChange = (category) => {
-		if (category == 'tracks'){setCategory(category)}
-		else {setCategory('artists')}
+	const categoryChange = (c) => {
+		if (category === c){}
+		else{setCategory(c)}
 	}
 	// Change range
 	const rangeChange = (r) => {
@@ -162,9 +243,9 @@ const TopItems = () => {
 		else {setRange(r)}
 	}
 	// Change display
-	const handleDisplayChange = () => {
-		if (displayList){setDisplayList(false)}
-		else{setDisplayList(true)}
+	const handleDisplayChange = (d) => {
+		if (displayList & d == 'collage'){setDisplayList(false)}
+		else if (!displayList & d == 'list'){setDisplayList(true)}
 	}
 
 	return (
@@ -183,20 +264,35 @@ const TopItems = () => {
 						</div>
 						<div className={styles.displayTypeRow}>
 							<div className={displayList? styles.displayType : styles.displayTypeActive} 
-								onClick={handleDisplayChange}>
+								onClick={()=>{handleDisplayChange('collage')}}>
 								<span>Collage</span>
 							</div>
 							<div className={displayList? styles.displayTypeActive : styles.displayType} 
-								onClick={handleDisplayChange}>
+								onClick={()=>{handleDisplayChange('list')}}>
 								<span>List</span>
 							</div>
 						</div>
 					</div>
 
 					{displayList?
-						"":
 						<div className={styles.topItemsList}>
-							{category == 'tracks'?
+							{category == 'artists'?
+								<>
+									{range == 'one' && artists1List}
+									{range == 'six' && artists2List}
+									{range == 'all' && artists3List}
+								</>
+								:
+								<>
+									{range == 'one' && tracks1List}
+									{range == 'six' && tracks2List}
+									{range == 'all' && tracks3List}
+								</>
+							}
+						</div>
+						:
+						<div className={styles.topItemsCollage}>
+							{category == 'artists'?
 								<>
 									{range == 'one' && artists1}
 									{range == 'six' && artists2}
