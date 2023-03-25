@@ -101,6 +101,21 @@ const TopItems = () => {
 			)
 		})
 		setArtists1(render)
+		render = data.artists.short_term.map((artist, id) => {
+			return (
+				<div className={styles.artistCard} key={id}>
+					<div className={styles.artistImg}>
+						<Image src={artist.image} width={150} height={150} alt={artist.name + " image"}/>
+					</div>
+					<div className={styles.artistContent}>
+						<h4>{id + 1}.</h4>
+						<h4>{artist.name}</h4>
+					</div>
+				</div>
+			)
+		})
+		setArtists1List(render)
+
 		// Last six months
 		render = data.artists.medium_term.map((artist, id) => {
 			return (
@@ -110,6 +125,20 @@ const TopItems = () => {
 			)
 		})
 		setArtists2(render)
+		render = data.artists.medium_term.map((artist, id) => {
+			return (
+				<div className={styles.artistCard} key={id}>
+					<div className={styles.artistImg}>
+						<Image src={artist.image} width={150} height={150} alt={artist.name + " image"}/>
+					</div>
+					<div className={styles.artistContent}>
+						<h4>{id + 1}.</h4>
+						<h4>{artist.name}</h4>
+					</div>
+				</div>
+			)
+		})
+		setArtists2List(render)
 
 		// All Time
 		render = data.artists.long_term.map((artist, id) => {
@@ -120,6 +149,20 @@ const TopItems = () => {
 			)
 		})
 		setArtists3(render)
+		render = data.artists.long_term.map((artist, id) => {
+			return (
+				<div className={styles.artistCard} key={id}>
+					<div className={styles.artistImg}>
+						<Image src={artist.image} width={150} height={150} alt={artist.name + " image"}/>
+					</div>
+					<div className={styles.artistContent}>
+						<h4>{id + 1}.</h4>
+						<h4>{artist.name}</h4>
+					</div>
+				</div>
+			)
+		})
+		setArtists3List(render)
 
 		// TOP TRACKS
 		// Last Month

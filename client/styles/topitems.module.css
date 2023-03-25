@@ -172,6 +172,7 @@
 	width: 100%;
 	margin: 20px 0px;
 }
+/* Track Card */
 .trackCard{
 	display: flex;
 	flex-direction: row;
@@ -259,5 +260,41 @@
 	.trackCardContent .trackDetails h5{
 		font-size: 11px;
 		padding: 0px;
+	}
+}
+
+/* Artist Card */
+.artistCard{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 10px 0px;
+	width: 150px;
+	height: 210px;
+	margin: 0px 10px 10px 10px;
+}
+.artistCard .artistImg{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.artistContent{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 0px 10px;
+	width: 100%;
+}
+.artistContent h4{
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+}
+
+@media (max-width: 400px){
+	.artistCard{
+		margin: 0px auto 10px auto;
 	}
 }
