@@ -18,6 +18,7 @@ const Login = () => {
 				router.push(res["data"])
 			})
 			.catch(function (error){
+				// Log error
 				console.log(error)
 			})
 	}

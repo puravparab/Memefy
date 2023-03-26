@@ -10,19 +10,6 @@
 	</p
 </p>
 
-# Table of Contents
-
-- [Table of Contents](#table-of-contents)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-	- [Modules](#modules)
-- [Examples](#examples)
-	- [Linear Regression:](#linear-regression)
-	- [Logistic Regression:](#logistic-regression)
-- [License](#license)
-
-
 # Requirements
 
 API: 
