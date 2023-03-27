@@ -127,7 +127,8 @@ AUTH_PASSWORD_VALIDATORS = [
 CORS_ALLOWED_ORIGINS = [
 	"http://192.168.1.103:3000",
 	"http://localhost:3000",
-	"http://127.0.0.1:3000"
+	"http://127.0.0.1:3000",
+	"https://www.memefy.app"
 ]
 
 CORS_ALLOW_METHODS = [

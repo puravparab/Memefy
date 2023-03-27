@@ -29,5 +29,8 @@ EXPOSE 8000
 ENV PYTHONUNBUFFERED=1
 ENV DJANGO_ENV=production
 
+# Collect static files
+RUN python manage.py collectstatic --noinput
+
 # Run the command to start Gunicorn
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "server.wsgi"]
