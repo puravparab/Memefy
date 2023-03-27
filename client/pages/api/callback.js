@@ -28,24 +28,13 @@ export default function handler(req, res) {
 			const refresh_token = response.data.refresh_token
 			const expires_in = response.data.expires_in
 
-			// Set cookies
-			const options = {
-				maxAge: expires_in, // Set the cookies to expire in the number of seconds specified by expires_in
-				path: '/', // Set the path for the cookies
-			};
-
-			const cookieStrings = [
-				serialize('access_token', access_token, options),
-				serialize('refresh_token', refresh_token, options)
-			];
-			res.setHeader('Set-Cookie', cookieStrings);
-			return res.redirect(307, '/')
+			return res.redirect(307, '/token?access_token=' + access_token + '&refresh_token=' + refresh_token + '&expires_in=' + expires_in)
 		})
 		.catch((err) => {
-			return res.redirect(307, '/')
+			return res.status(500).send("Error occurred while requeesting access token");
 		})
 	} 
 	else {
-		return res.redirect(307, '/')
+		return res.status(400).send("Invalid request. 'code' parameter is required.");
 	}
 }
