@@ -31,10 +31,11 @@ export default function handler(req, res) {
 			return res.redirect(307, '/token?access_token=' + access_token + '&refresh_token=' + refresh_token + '&expires_in=' + expires_in)
 		})
 		.catch((err) => {
-			return res.status(500).send("Error occurred while requeesting access token");
+			// return res.status(500).send("Error occurred while requesting access token")
+			return res.status(500).send(err)
 		})
 	} 
 	else {
-		return res.status(400).send("Invalid request. 'code' parameter is required.");
+		return res.status(400).send("Invalid request. 'code' parameter is required.")
 	}
 }
