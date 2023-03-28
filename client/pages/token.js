@@ -9,9 +9,9 @@ const Token = () => {
 		if(!router.isReady){
 			return
 		} else{
-			const access_token = router.query.access_token;
-			const refresh_token = router.query.refresh_token;
-			const expires_in = parseInt(router.query.expires_in);
+			const access_token = router.query.access_token
+			const refresh_token = router.query.refresh_token
+			const expires_in = parseInt(router.query.expires_in)
 			const options = {
 				maxAge: expires_in, // Set the cookies to expire in the number of seconds specified by expires_in
 				path: '/', // Set the path for the cookies
