@@ -137,6 +137,16 @@
 	font-size: 20px;
 }
 
+/* NO ITEMS */
+.noItemText{
+	display: flex;
+	flex-direction: column;
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
+	margin: 20px 0px;
+}
+
 
 /* TOP ITEMS LIST */
 .topItemsContainer .topItemsCollage{

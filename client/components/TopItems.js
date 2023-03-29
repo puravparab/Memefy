@@ -91,184 +91,223 @@ const TopItems = () => {
 
 	// Parse through data and create components for all permutations of lists
 	const renderList = (data) => {
+		const noData = () => {return  (<div className={styles.noItemText}>Listen to more songs!</div>)}
+		let renderData
+
 		// TOP ARTISTS
 		// Last Month
-		let render = data.artists.short_term.map((artist, id) => {
-			return (
-				<div className={styles.topItemCard} key={id}>
-					<Image src={artist.image} width={100} height={100} alt={artist.name + " image"}/>
-				</div>
-			)
-		})
-		setArtists1(render)
-		render = data.artists.short_term.map((artist, id) => {
-			return (
-				<div className={styles.artistCard} key={id}>
-					<div className={styles.artistImg}>
-						<Image src={artist.image} width={150} height={150} alt={artist.name + " image"}/>
+		if (data.artists.short_term.length == 0) {renderData = noData}
+		else{
+			renderData = data.artists.short_term.map((artist, id) => {
+				return (
+					<div className={styles.topItemCard} key={id}>
+						<Image src={artist.image} width={100} height={100} alt={artist.name + " image"}/>
 					</div>
-					<div className={styles.artistContent}>
-						<h4>{id + 1}.</h4>
-						<h4>{artist.name}</h4>
+				)
+			})
+		}
+		setArtists1(renderData)
+		if (data.artists.short_term.length == 0) {renderData = noData}
+		else{
+			renderData = data.artists.short_term.map((artist, id) => {
+				return (
+					<div className={styles.artistCard} key={id}>
+						<div className={styles.artistImg}>
+							<Image src={artist.image} width={150} height={150} alt={artist.name + " image"}/>
+						</div>
+						<div className={styles.artistContent}>
+							<h4>{id + 1}.</h4>
+							<h4>{artist.name}</h4>
+						</div>
 					</div>
-				</div>
-			)
-		})
-		setArtists1List(render)
+				)
+			})
+		}
+		setArtists1List(renderData)
 
 		// Last six months
-		render = data.artists.medium_term.map((artist, id) => {
-			return (
-				<div className={styles.topItemCard} key={id}>
-					<Image src={artist.image} width={100} height={100} alt={artist.name + " image"}/>
-				</div>
-			)
-		})
-		setArtists2(render)
-		render = data.artists.medium_term.map((artist, id) => {
-			return (
-				<div className={styles.artistCard} key={id}>
-					<div className={styles.artistImg}>
-						<Image src={artist.image} width={150} height={150} alt={artist.name + " image"}/>
+		if (data.artists.medium_term.length == 0) {renderData = noData}
+		else{
+			renderData = data.artists.medium_term.map((artist, id) => {
+				return (
+					<div className={styles.topItemCard} key={id}>
+						<Image src={artist.image} width={100} height={100} alt={artist.name + " image"}/>
 					</div>
-					<div className={styles.artistContent}>
-						<h4>{id + 1}.</h4>
-						<h4>{artist.name}</h4>
+				)
+			})
+		}
+		setArtists2(renderData)
+		if (data.artists.medium_term.length == 0) {renderData = noData}
+		else{
+			renderData = data.artists.medium_term.map((artist, id) => {
+				return (
+					<div className={styles.artistCard} key={id}>
+						<div className={styles.artistImg}>
+							<Image src={artist.image} width={150} height={150} alt={artist.name + " image"}/>
+						</div>
+						<div className={styles.artistContent}>
+							<h4>{id + 1}.</h4>
+							<h4>{artist.name}</h4>
+						</div>
 					</div>
-				</div>
-			)
-		})
-		setArtists2List(render)
+				)
+			})
+		}
+		setArtists2List(renderData)
 
 		// All Time
-		render = data.artists.long_term.map((artist, id) => {
-			return (
-				<div className={styles.topItemCard} key={id}>
-					<Image src={artist.image} width={100} height={100} alt={artist.name + " image"}/>
-				</div>
-			)
-		})
-		setArtists3(render)
-		render = data.artists.long_term.map((artist, id) => {
-			return (
-				<div className={styles.artistCard} key={id}>
-					<div className={styles.artistImg}>
-						<Image src={artist.image} width={150} height={150} alt={artist.name + " image"}/>
+		if (data.artists.long_term.length == 0) {renderData = noData}
+		else{
+			renderData = data.artists.long_term.map((artist, id) => {
+				return (
+					<div className={styles.topItemCard} key={id}>
+						<Image src={artist.image} width={100} height={100} alt={artist.name + " image"}/>
 					</div>
-					<div className={styles.artistContent}>
-						<h4>{id + 1}.</h4>
-						<h4>{artist.name}</h4>
+				)
+			})
+		}
+		setArtists3(renderData)
+		if (data.artists.long_term.length == 0) {renderData = noData}
+		else{
+			renderData = data.artists.long_term.map((artist, id) => {
+				return (
+					<div className={styles.artistCard} key={id}>
+						<div className={styles.artistImg}>
+							<Image src={artist.image} width={150} height={150} alt={artist.name + " image"}/>
+						</div>
+						<div className={styles.artistContent}>
+							<h4>{id + 1}.</h4>
+							<h4>{artist.name}</h4>
+						</div>
 					</div>
-				</div>
-			)
-		})
-		setArtists3List(render)
+				)
+			})
+		}
+		setArtists3List(renderData)
 
 		// TOP TRACKS
 		// Last Month
-		render = data.tracks.short_term.map((track, id) => {
-			return (
-				<div className={styles.topItemCard} key={id} 
-					onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}>
-					<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}/>
-				</div>
-			)
-		})
-		setTracks1(render)
-		render = data.tracks.short_term.map((track, id) => {
-			// Iterate through artists of this track
-			let artists = track.artists.map((artist, j) => {
-				if (j == 0){return (<>{artist.name}</>)}
-				else{return(<>, {artist.name} </>)}
-			})
-			return (
-				<div className={styles.trackCard} key={id}>
-					<div className={styles.trackImg}>
-						<Image src={track.image} width={100} height={100} alt={track.name + " image"}
-							onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}
-						/>
+		if (data.tracks.short_term.length == 0) {renderData = noData}
+		else{
+			renderData = data.tracks.short_term.map((track, id) => {
+				return (
+					<div className={styles.topItemCard} key={id} 
+						onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}>
+						<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}/>
 					</div>
-					<div className={styles.trackCardContent}>
-						<div className={styles.trackRank}>{id + 1}.</div>
-						<div className={styles.trackDetails}>
-							<h4>{track.name}</h4>
-							<h5>{artists}</h5>
+				)
+			})
+		}
+		setTracks1(renderData)
+		if (data.tracks.short_term.length == 0) {renderData = noData}
+		else{
+			renderData = data.tracks.short_term.map((track, id) => {
+				// Iterate through artists of this track
+				let artists = track.artists.map((artist, j) => {
+					if (j == 0){return (<>{artist.name}</>)}
+					else{return(<>, {artist.name} </>)}
+				})
+				return (
+					<div className={styles.trackCard} key={id}>
+						<div className={styles.trackImg}>
+							<Image src={track.image} width={100} height={100} alt={track.name + " image"}
+								onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}
+							/>
+						</div>
+						<div className={styles.trackCardContent}>
+							<div className={styles.trackRank}>{id + 1}.</div>
+							<div className={styles.trackDetails}>
+								<h4>{track.name}</h4>
+								<h5>{artists}</h5>
+							</div>
 						</div>
 					</div>
-				</div>
-			)
-		})
-		setTracks1List(render)
+				)
+			})
+		}
+		setTracks1List(renderData)
 
 		// Last six months
-		render = data.tracks.medium_term.map((track, id) => {
-			return (
-				<div className={styles.topItemCard} key={id} 
-					onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}>
-					<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}/>
-				</div>
-			)
-		})
-		setTracks2(render)
-		render = data.tracks.medium_term.map((track, id) => {
-			// Iterate through artists of this track
-			let artists = track.artists.map((artist, j) => {
-				if (j == 0){return (<>{artist.name}</>)}
-				else{return(<>, {artist.name} </>)}
-			})
-			return (
-				<div className={styles.trackCard} key={id}>
-					<div className={styles.trackImg}>
-						<Image src={track.image} width={100} height={100} alt={track.name + " image"}
-							onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}
-						/>
+		if (data.tracks.medium_term.length == 0) {renderData = noData}
+		else{
+			renderData = data.tracks.medium_term.map((track, id) => {
+				return (
+					<div className={styles.topItemCard} key={id} 
+						onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}>
+						<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}/>
 					</div>
-					<div className={styles.trackCardContent}>
-						<div className={styles.trackRank}>{id + 1}.</div>
-						<div className={styles.trackDetails}>
-							<h4>{track.name}</h4>
-							<h5>{artists}</h5>
+				)
+			})
+		}
+		setTracks2(renderData)
+		if (data.tracks.medium_term.length == 0) {renderData = noData}
+		else{
+			renderData = data.tracks.medium_term.map((track, id) => {
+				// Iterate through artists of this track
+				let artists = track.artists.map((artist, j) => {
+					if (j == 0){return (<>{artist.name}</>)}
+					else{return(<>, {artist.name} </>)}
+				})
+				return (
+					<div className={styles.trackCard} key={id}>
+						<div className={styles.trackImg}>
+							<Image src={track.image} width={100} height={100} alt={track.name + " image"}
+								onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}
+							/>
+						</div>
+						<div className={styles.trackCardContent}>
+							<div className={styles.trackRank}>{id + 1}.</div>
+							<div className={styles.trackDetails}>
+								<h4>{track.name}</h4>
+								<h5>{artists}</h5>
+							</div>
 						</div>
 					</div>
-				</div>
-			)
-		})
-		setTracks2List(render)
+				)
+			})
+		}
+		setTracks2List(renderData)
 
 		// All Time
-		render = data.tracks.long_term.map((track, id) => {
-			return (
-				<div className={styles.topItemCard} key={id} 
-					onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}>
-					<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}/>
-				</div>
-			)
-		})
-		setTracks3(render)
-		render = data.tracks.long_term.map((track, id) => {
-			// Iterate through artists of this track
-			let artists = track.artists.map((artist, j) => {
-				if (j == 0){return (<>{artist.name}</>)}
-				else{return(<>, {artist.name} </>)}
-			})
-			return (
-				<div className={styles.trackCard} key={id}>
-					<div className={styles.trackImg}>
-						<Image src={track.image} width={100} height={100} alt={track.name + " image"}
-							onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}
-						/>
+		if (data.tracks.long_term.length == 0) {renderData = noData}
+		else{
+			renderData = data.tracks.long_term.map((track, id) => {
+				return (
+					<div className={styles.topItemCard} key={id} 
+						onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}>
+						<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}/>
 					</div>
-					<div className={styles.trackCardContent}>
-						<div className={styles.trackRank}>{id + 1}.</div>
-						<div className={styles.trackDetails}>
-							<h4>{track.name}</h4>
-							<h5>{artists}</h5>
+				)
+			})
+		}
+		setTracks3(renderData)
+		if (data.tracks.long_term.length == 0) {renderData = noData}
+		else{
+			renderData = data.tracks.long_term.map((track, id) => {
+				// Iterate through artists of this track
+				let artists = track.artists.map((artist, j) => {
+					if (j == 0){return (<>{artist.name}</>)}
+					else{return(<>, {artist.name} </>)}
+				})
+				return (
+					<div className={styles.trackCard} key={id}>
+						<div className={styles.trackImg}>
+							<Image src={track.image} width={100} height={100} alt={track.name + " image"}
+								onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}
+							/>
+						</div>
+						<div className={styles.trackCardContent}>
+							<div className={styles.trackRank}>{id + 1}.</div>
+							<div className={styles.trackDetails}>
+								<h4>{track.name}</h4>
+								<h5>{artists}</h5>
+							</div>
 						</div>
 					</div>
-				</div>
-			)
-		})
-		setTracks3List(render)
+				)
+			})
+		}
+		setTracks3List(renderData)
 	}
 
 	// Change categories
