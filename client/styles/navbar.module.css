@@ -5,7 +5,7 @@
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 15px 40px;
-	padding: 10px 5px;
+	padding: 10px 15px;
 	border-top: 1px solid rgb(30, 215, 96);
 	border-bottom: 1px solid rgb(30, 215, 96);
 }

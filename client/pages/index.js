@@ -19,9 +19,11 @@ const Home = () => {
 		const refresh_token =  cookies.refresh_token
 		if (access_token){
 			if (previous_page != '/' && previous_page){
+				sessionStorage.removeItem('previous_page')
 				router.push(previous_page)
 			}
 			if (previous_page == '/' && previous_page){
+				sessionStorage.removeItem('previous_page')
 				setShowHome(true)
 			}
 		}
