@@ -9,13 +9,17 @@ import styles from '../styles/login.module.css'
 
 const Login = () => {
 	const router = useRouter()
-	const url = publicRuntimeConfig.SERVER_URL + "api/spotify"
 
 	const handleClick = () => {
+		const url = publicRuntimeConfig.SERVER_URL + "api/spotify"
 		axios.get(url)
 			.then(function (res){
-				sessionStorage.setItem("previous_page", router.pathname);
-				router.push(res["data"])
+				sessionStorage.setItem("previous_page", router.pathname)
+				if (res["status"] === 200){
+					router.push(res["data"])
+				}else{
+					// Add error
+				}
 			})
 			.catch(function (error){
 				// Log error

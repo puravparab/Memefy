@@ -24,6 +24,38 @@ def authenticate(request, format=None):
 		}).prepare().url
 	return Response(url, status=status.HTTP_200_OK)
 
+@api_view(['POST'])
+def get_tokens(request, format=None):
+	code = request.data.get("code")
+	error = request.data.get("error")
+
+	if code:
+		# Request access tokens and refresh tokens
+		response = post('https://accounts.spotify.com/api/token',
+			data={
+				'grant_type': 'authorization_code',
+				'code': code,
+				'redirect_uri': settings.SPOTIFY_REDIRECT_URI,
+				'client_id': settings.SPOTIFY_CLIENT_ID,
+				'client_secret': settings.SPOTIFY_CLIENT_SECRET,
+			})
+
+		if (response.status_code == 200):
+			response = response.json()
+			access_token = response.get('access_token')
+			# expires_in = str(timezone.now() + timedelta(seconds=response.get('expires_in')))
+			expires_in = response.get('expires_in')
+			refresh_token = response.get('refresh_token')
+			return Response({
+				'access_token': access_token,
+				'refresh_token': refresh_token,
+				'expires_in': expires_in
+			}, status=status.HTTP_200_OK)
+		else:
+			return Response({'error': 'spotify token request failed'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+	else:
+		return Response({'error': 'code invalid'}, status=status.HTTP_400_BAD_REQUEST)
+
 # Get user's spotify profile
 @api_view(['GET'])
 def get_user_profile(request, format=None):

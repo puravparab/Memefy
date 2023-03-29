@@ -128,7 +128,8 @@ CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS").split(' ')
 
 CORS_ALLOW_METHODS = [
 	'GET',
-	'OPTIONS'
+	'OPTIONS',
+	'POST'
 ]
 
 # Internationalization
