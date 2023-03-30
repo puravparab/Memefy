@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useRef } from "react";
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import getConfig from 'next/config';
@@ -44,7 +45,6 @@ const TopItems = () => {
 	const get_top_items = () => {
 		const cookies = parse(document.cookie);
 		const access_token =  cookies.access_token
-
 		let top_items = JSON.parse(sessionStorage.getItem('top_items'))
 
 		// If top items are already stored
@@ -70,13 +70,15 @@ const TopItems = () => {
 					console.log(error)
 				})
 			} else{
-				router.push('/')
+				router.push('/login')
 			}
 		}
 	}
 
 	// Audio preview
-	const [audio, setAudio] = useState(new Audio());
+	const [audio, setAudio] = useState(
+		typeof Audio !== 'undefined' ? new Audio() : null
+	);
 
 	const playAudio = (preview_url) => {
 		audio.pause();

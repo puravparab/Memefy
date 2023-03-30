@@ -4,30 +4,25 @@ import Head from 'next/head'
 import { parse } from 'cookie';
 
 import Navbar from '../components/Navbar.js'
-import Login from '../components/Login.js'
 import TopItems from '../components/TopItems.js'
 import styles from '../styles/home.module.css'
 
 const Home = () => {
-	const [showHome, setShowHome] = useState(false)
 	const router = useRouter()
 
 	useEffect(() => {
-		const previous_page = sessionStorage.getItem('previous_page')
-		const cookies = parse(document.cookie);
+		const cookies = parse(document.cookie)
 		const access_token =  cookies.access_token
 		const refresh_token =  cookies.refresh_token
-		if (access_token){
-			if (previous_page != '/' && previous_page){
-				sessionStorage.removeItem('previous_page')
-				router.push(previous_page)
-			}
-			if (previous_page == '/' && previous_page){
-				sessionStorage.removeItem('previous_page')
-				setShowHome(true)
-			}
+		const top_items = JSON.parse(sessionStorage.getItem('top_items'))
+
+		if (access_token || top_items){
+			sessionStorage.removeItem('previous_page')
 		}
-		
+		else{
+			sessionStorage.setItem("previous_page", '/')
+			router.push('/login')
+		}
 	}, [])
 
 	return (
@@ -48,17 +43,9 @@ const Home = () => {
 			</Head>
 
 			<div className={styles.homeContainer}>
-				{showHome?
-					<>
-						<h1>Memefy</h1> 
-						<Navbar />
-						<TopItems />
-					</>:
-					<div className={styles.homeNoAuth}>
-						<h1>Memefy</h1>
-						<Login />
-					</div>
-				}
+				<h1>Memefy</h1> 
+				<Navbar />
+				<TopItems />
 			</div>
 		</>
 	)

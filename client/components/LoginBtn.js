@@ -7,14 +7,13 @@ import axios from 'axios'
 
 import styles from '../styles/login.module.css'
 
-const Login = () => {
+const LoginBtn = () => {
 	const router = useRouter()
 
 	const handleClick = () => {
 		const url = publicRuntimeConfig.SERVER_URL + "api/spotify"
 		axios.get(url)
 			.then(function (res){
-				sessionStorage.setItem("previous_page", router.pathname)
 				if (res["status"] === 200){
 					router.push(res["data"])
 				}else{
@@ -34,4 +33,4 @@ const Login = () => {
 	)
 }
 
-export default Login
+export default LoginBtn

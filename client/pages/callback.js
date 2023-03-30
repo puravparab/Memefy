@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import getConfig from 'next/config';
 
 import axios from 'axios'
-import { serialize } from 'cookie';
+import { serialize, parse } from 'cookie';
 
 const { publicRuntimeConfig} = getConfig();
 
@@ -39,7 +39,13 @@ const Callback = () => {
 							// Set the cookies
 							document.cookie = access_token_cookie
 							document.cookie = refresh_token_cookie
-							router.push('/')
+
+							const previous_page = sessionStorage.getItem('previous_page')
+							if (previous_page){
+								router.push(previous_page)
+							} else{
+								router.push('/')
+							}
 						}
 						// ADD Error
 					})
