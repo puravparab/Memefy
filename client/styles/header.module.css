@@ -1,3 +1,19 @@
+/* HEADER */
+.header{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+.header h1{
+	font-size: 46px;
+	font-weight: bold;
+	color: white;
+	margin: 10px 0px;
+}
+
+/* NAVBAR */
+
 .navbar{
 	display: flex;
 	flex-direction: row;

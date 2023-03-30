@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import { parse } from 'cookie';
 
-import Navbar from '../components/Navbar.js'
+import { parse } from 'cookie';
+import Header from '../components/Header.js'
 import TopItems from '../components/TopItems.js'
 import styles from '../styles/home.module.css'
 
@@ -43,8 +43,7 @@ const Home = () => {
 			</Head>
 
 			<div className={styles.homeContainer}>
-				<h1>Memefy</h1> 
-				<Navbar />
+				<Header />
 				<TopItems />
 			</div>
 		</>
