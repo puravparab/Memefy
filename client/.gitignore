@@ -34,6 +34,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-/pages/circle.js
-/styles/circle.module.css
 /pages/listfy_inactive.js

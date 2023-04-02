@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
 import { parse } from 'cookie';
 import Header from '../components/Header.js'
-import TopItems from '../components/TopItems.js'
-import styles from '../styles/home.module.css'
+import Circle from '../components/Circle.js'
+import styles from '../styles/circle.module.css'
 
-const Home = () => {
+const CirclePage = () => {
 	const router = useRouter()
 
 	useEffect(() => {
@@ -20,7 +20,7 @@ const Home = () => {
 			sessionStorage.removeItem('previous_page')
 		}
 		else{
-			sessionStorage.setItem("previous_page", '/')
+			sessionStorage.setItem("previous_page", '/circle')
 			router.push('/login')
 		}
 	}, [])
@@ -28,26 +28,26 @@ const Home = () => {
 	return (
 		<>
 			<Head>
-				<title>Memefy</title>
+				<title>your inner circle | Memefy</title>
 				<meta 
 					name="description" 
-					content="Find out your favorite artists and tracks on spotify. Share with your friends."
+					content="The artists in your inner circle"
 				/>
 				<link rel="canonical" href="/" />
-				<meta property="og:title" content=">Memefy" />
+				<meta property="og:title" content=">Your inner circle | Memefy" />
 				<meta property="og:url" content="" />
 				<meta 
 					property="og:description" 
-					content="Create personalized memes based on you listening history"
+					content="The artists in your inner circle"
 				/>
 			</Head>
 
-			<div className={styles.homeContainer}>
+			<div className={styles.circlePageContainer}>
 				<Header />
-				<TopItems />
+				<Circle />
 			</div>
 		</>
 	)
 }
 
-export default Home
+export default CirclePage
