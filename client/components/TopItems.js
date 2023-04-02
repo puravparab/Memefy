@@ -6,6 +6,7 @@ import getConfig from 'next/config';
 import axios from 'axios'
 import { parse } from 'cookie';
 
+import { ArtistCard, TrackCard } from './ItemCard.js'
 import styles from '../styles/topitems.module.css'
 
 const { publicRuntimeConfig } = getConfig();
@@ -113,15 +114,7 @@ const TopItems = () => {
 		else{
 			renderData = data.artists.short_term.map((artist, id) => {
 				return (
-					<div className={styles.artistCard} key={id}>
-						<div className={styles.artistImg}>
-							<Image src={artist.image} width={150} height={150} alt={artist.name + " image"}/>
-						</div>
-						<div className={styles.artistContent}>
-							<h4>{id + 1}.</h4>
-							<h4>{artist.name}</h4>
-						</div>
-					</div>
+					<ArtistCard id={id} artist={artist}/>
 				)
 			})
 		}
@@ -143,15 +136,7 @@ const TopItems = () => {
 		else{
 			renderData = data.artists.medium_term.map((artist, id) => {
 				return (
-					<div className={styles.artistCard} key={id}>
-						<div className={styles.artistImg}>
-							<Image src={artist.image} width={150} height={150} alt={artist.name + " image"}/>
-						</div>
-						<div className={styles.artistContent}>
-							<h4>{id + 1}.</h4>
-							<h4>{artist.name}</h4>
-						</div>
-					</div>
+					<ArtistCard id={id} artist={artist}/>
 				)
 			})
 		}
@@ -173,15 +158,7 @@ const TopItems = () => {
 		else{
 			renderData = data.artists.long_term.map((artist, id) => {
 				return (
-					<div className={styles.artistCard} key={id}>
-						<div className={styles.artistImg}>
-							<Image src={artist.image} width={150} height={150} alt={artist.name + " image"}/>
-						</div>
-						<div className={styles.artistContent}>
-							<h4>{id + 1}.</h4>
-							<h4>{artist.name}</h4>
-						</div>
-					</div>
+					<ArtistCard id={id} artist={artist}/>
 				)
 			})
 		}
@@ -204,26 +181,8 @@ const TopItems = () => {
 		if (data.tracks.short_term.length == 0) {renderData = noData}
 		else{
 			renderData = data.tracks.short_term.map((track, id) => {
-				// Iterate through artists of this track
-				let artists = track.artists.map((artist, j) => {
-					if (j == 0){return (<>{artist.name}</>)}
-					else{return(<>, {artist.name} </>)}
-				})
 				return (
-					<div className={styles.trackCard} key={id}>
-						<div className={styles.trackImg}>
-							<Image src={track.image} width={100} height={100} alt={track.name + " image"}
-								onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}
-							/>
-						</div>
-						<div className={styles.trackCardContent}>
-							<div className={styles.trackRank}>{id + 1}.</div>
-							<div className={styles.trackDetails}>
-								<h4>{track.name}</h4>
-								<h5>{artists}</h5>
-							</div>
-						</div>
-					</div>
+					<TrackCard id={id} track={track} playAudio={playAudio} stopAudio={stopAudio}/>
 				)
 			})
 		}
@@ -245,26 +204,8 @@ const TopItems = () => {
 		if (data.tracks.medium_term.length == 0) {renderData = noData}
 		else{
 			renderData = data.tracks.medium_term.map((track, id) => {
-				// Iterate through artists of this track
-				let artists = track.artists.map((artist, j) => {
-					if (j == 0){return (<>{artist.name}</>)}
-					else{return(<>, {artist.name} </>)}
-				})
 				return (
-					<div className={styles.trackCard} key={id}>
-						<div className={styles.trackImg}>
-							<Image src={track.image} width={100} height={100} alt={track.name + " image"}
-								onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}
-							/>
-						</div>
-						<div className={styles.trackCardContent}>
-							<div className={styles.trackRank}>{id + 1}.</div>
-							<div className={styles.trackDetails}>
-								<h4>{track.name}</h4>
-								<h5>{artists}</h5>
-							</div>
-						</div>
-					</div>
+					<TrackCard id={id} track={track} playAudio={playAudio} stopAudio={stopAudio}/>
 				)
 			})
 		}
@@ -286,26 +227,8 @@ const TopItems = () => {
 		if (data.tracks.long_term.length == 0) {renderData = noData}
 		else{
 			renderData = data.tracks.long_term.map((track, id) => {
-				// Iterate through artists of this track
-				let artists = track.artists.map((artist, j) => {
-					if (j == 0){return (<>{artist.name}</>)}
-					else{return(<>, {artist.name} </>)}
-				})
 				return (
-					<div className={styles.trackCard} key={id}>
-						<div className={styles.trackImg}>
-							<Image src={track.image} width={100} height={100} alt={track.name + " image"}
-								onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}
-							/>
-						</div>
-						<div className={styles.trackCardContent}>
-							<div className={styles.trackRank}>{id + 1}.</div>
-							<div className={styles.trackDetails}>
-								<h4>{track.name}</h4>
-								<h5>{artists}</h5>
-							</div>
-						</div>
-					</div>
+					<TrackCard id={id} track={track} playAudio={playAudio} stopAudio={stopAudio}/>
 				)
 			})
 		}
