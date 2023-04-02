@@ -245,12 +245,20 @@
 	padding: 5px 0px 0px 0px;
 }
 
-@media (max-width: 400px){
+@media (max-width: 450px){
 	.topItemsContainer .topItemsList{
 		justify-content: flex-start;
 	}
 	.trackCard{
 		width: 100%;
+		border: none;
+	}
+	.trackCard:hover{
+		background: none;
+		border: none;
+	}
+	.trackCard .trackImg{
+		border: 2px solid  rgb(18,18,18);
 	}
 	.trackCardContent{
 		padding: 5px 5px;
@@ -259,7 +267,7 @@
 		font-size: 14px;
 	}
 	.trackCardContent .trackDetails h4{
-		font-size: 14px;
+		font-size: 15px;
 	}
 	.trackCardContent .trackDetails h5{
 		font-size: 12px;
@@ -307,7 +315,7 @@
 	font-weight: bold;
 }
 
-@media (max-width: 400px){
+@media (max-width: 450px){
 	.artistCard{
 		margin: 0px auto 10px auto;
 	}
