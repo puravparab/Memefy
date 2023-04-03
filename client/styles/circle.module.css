@@ -60,6 +60,7 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
+	gap: 100px 0px;
 	width: 100%;
 	margin: 30px 0px 0px 0px;
 }
@@ -124,4 +125,39 @@
 	.circleRangeRow .itrr span, .circleRangeRow .itrrActive span{
 		font-size: 15px;
 	}
+}
+
+/* CIRCLE */
+
+.displayCircle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 500px;
+	width: 500px;
+	background: rgb(24, 24, 24);
+}
+
+.innerRing{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 300px;
+	width: 300px;
+	border-radius: 50%;
+	border: 2px solid white;
+	position: relative;
+}
+.ir1, .ir2, .ir3, .ir4, .ir5, .ir6{
+	position: absolute;
+}
+.ir1{transform: translate(0px, -150px);}
+.ir2{transform: translate(130px, -75px);}
+.ir3{transform: translate(130px, 75px);}
+.ir4{transform: translate(0px, 150px);}
+.ir5{transform: translate(-130px, 75px);}
+.ir6{transform: translate(-130px, -75px);}
+
+.innerRing img{
+	border-radius: 50%;
 }

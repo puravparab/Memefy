@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 import { parse } from 'cookie';
 import Header from '../components/Header.js'
-import Circle from '../components/Circle.js'
+import Circle from '../components/Circle/Circle.js'
 import styles from '../styles/circle.module.css'
 
 const CirclePage = () => {

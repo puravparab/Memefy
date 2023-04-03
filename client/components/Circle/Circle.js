@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 import getConfig from 'next/config';
 import axios from 'axios'
 import { parse } from 'cookie';
 
-import styles from '../styles/circle.module.css'
+import DisplayCircle from './DisplayCircle.js'
+import styles from '../../styles/circle.module.css'
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -12,8 +14,19 @@ const Circle = () => {
 	const router = useRouter()
 	// check if component should render
 	const [render, setRender] = useState(true)
+	const [imageSrc, setImageSrc] = useState("")
+
 	// What items should be displayed
 	const [range, setRange] = useState('six')
+	// Change range
+	const rangeChange = (r) => {
+		if (r == 'one'){setRange(r)}
+		else if (r == 'six'){setRange(r)}
+		else {setRange(r)}
+	}
+
+	// Store rendered components to be displayed
+	const [displayCircle1, setDisplayCircle1] = useState('')
 
 	useEffect(()=>{
 		get_top_items()
@@ -27,7 +40,7 @@ const Circle = () => {
 
 		// If top items are already stored
 		if (top_items){
-			// renderList(top_items)
+			renderCircle(top_items)
 			setRender(true)
 		}
 		else{
@@ -40,7 +53,7 @@ const Circle = () => {
 					let top_items = JSON.parse(sessionStorage.getItem('top_items'))
 					// If top items are already stored
 					if (top_items){
-						// renderList(top_items)
+						renderCircle(top_items)
 						setRender(true)
 					}
 				})
@@ -53,11 +66,22 @@ const Circle = () => {
 		}
 	}
 
-	// Change range
-	const rangeChange = (r) => {
-		if (r == 'one'){setRange(r)}
-		else if (r == 'six'){setRange(r)}
-		else {setRange(r)}
+	const renderCircle = (data) => {
+		let renderData
+		const noData = () => {return  (<div className={styles.noItemText}>Listen to more songs!</div>)}
+
+		// LAST 6 MONTHS
+		if (data.artists.medium_term.length == 0) {renderData = noData}
+		else{
+			let artist_list = []
+			data.artists.medium_term.map((artist, id) => {
+				artist_list.push(artist.image)
+			})
+			console.log(artist_list)
+			renderData = () => {return <DisplayCircle artist_list={artist_list} />}
+		}
+		setDisplayCircle1(renderData)
+
 	}
 
 	return (
@@ -71,6 +95,8 @@ const Circle = () => {
 							<div className={range == 'all'? styles.itrrActive : styles.itrr} onClick={()=>{rangeChange('all')}}><span>All Time</span></div>
 						</div>
 					</div>
+					
+					{displayCircle1}
 				</>
 				: 
 				""
