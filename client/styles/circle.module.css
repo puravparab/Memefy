@@ -13,9 +13,17 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	gap: 50px 0px;
 	width: 100%;
 	margin: 30px 0px 0px 0px;
+}
+
+.noItemText{
+	display: flex;
+	flex-direction: column;
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
+	margin: 0px;
 }
 
 @media (max-width: 400px){
@@ -78,6 +86,22 @@
 	.circleRangeRow .itrr span, .circleRangeRow .itrrActive span{
 		font-size: 15px;
 	}
+}
+
+/* SLIDER */
+.circleRingSlider{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 10px 0px;
+}
+.circleRingSlider input{
+	cursor: pointer;
+}
+.circleRingSlider span{
+	color: rgb(41, 205, 99);
+	font-size: 18px;
 }
 
 /* CIRCLE */

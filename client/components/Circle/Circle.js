@@ -25,12 +25,24 @@ const Circle = () => {
 		else {setRange(r)}
 	}
 
+	// Slider
+	const [sliderValue, setSliderValue] = useState(3)
+	const handleSlider = (e) => {
+		setSliderValue(parseInt(e.target.value))
+	}
+
 	// Store rendered components to be displayed
 	const [displayCircle1, setDisplayCircle1] = useState('')
+	const [displayCircle2, setDisplayCircle2] = useState('')
+	const [displayCircle3, setDisplayCircle3] = useState('')
 
 	useEffect(()=>{
 		get_top_items()
 	},[])
+
+	useEffect(()=>{
+		get_top_items()
+	},[sliderValue])
 
 	// Send a request to the server to get top items 
 	const get_top_items = () => {
@@ -70,6 +82,17 @@ const Circle = () => {
 		let renderData
 		const noData = () => {return  (<div className={styles.noItemText}>Listen to more songs!</div>)}
 
+		// LAST MONTH
+		if (data.artists.short_term.length == 0) {renderData = noData}
+		else{
+			let artist_list = []
+			data.artists.short_term.map((artist, id) => {
+				artist_list.push(artist.image)
+			})
+			renderData = () => {return <DisplayCircle artist_list={artist_list} rings={sliderValue}/>}
+		}
+		setDisplayCircle1(renderData)
+
 		// LAST 6 MONTHS
 		if (data.artists.medium_term.length == 0) {renderData = noData}
 		else{
@@ -77,10 +100,20 @@ const Circle = () => {
 			data.artists.medium_term.map((artist, id) => {
 				artist_list.push(artist.image)
 			})
-			console.log(artist_list)
-			renderData = () => {return <DisplayCircle artist_list={artist_list} />}
+			renderData = () => {return (<DisplayCircle artist_list={artist_list} rings={sliderValue}/>)}
 		}
-		setDisplayCircle1(renderData)
+		setDisplayCircle2(renderData)
+
+		// ALL TIME
+		if (data.artists.long_term.length == 0) {renderData = noData}
+		else{
+			let artist_list = []
+			data.artists.long_term.map((artist, id) => {
+				artist_list.push(artist.image)
+			})
+			renderData = () => {return <DisplayCircle artist_list={artist_list} rings={sliderValue}/>}
+		}
+		setDisplayCircle3(renderData)
 
 	}
 
@@ -94,9 +127,20 @@ const Circle = () => {
 							<div className={range == 'six'? styles.itrrActive : styles.itrr} onClick={()=>{rangeChange('six')}}><span>Last 6 Months</span></div>
 							<div className={range == 'all'? styles.itrrActive : styles.itrr} onClick={()=>{rangeChange('all')}}><span>All Time</span></div>
 						</div>
+
+						<div className={styles.circleRingSlider}>
+							<input type="range" min="1" max="3" step="1" value={sliderValue} onChange={handleSlider}/>
+							<span>
+								{sliderValue === 1 && "Small"}
+								{sliderValue === 2 && "Medium"}
+								{sliderValue === 3 && "Large"}
+							</span>
+						</div>
 					</div>
 					
-					{displayCircle1}
+					{range == 'one' && displayCircle1}
+					{range == 'six' && displayCircle2}
+					{range == 'all' && displayCircle3}
 				</>
 				: 
 				""
