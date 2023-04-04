@@ -105,6 +105,46 @@
 }
 
 /* CIRCLE */
+.displayCircleContainer{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: rgb(24, 24, 24);
+	padding: 0px 25px;
+}
+.displayCircleHeader{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px 0px;
+	max-width: 450px;
+	padding: 20px 0px;
+}
+.displayCircleHeader h3{
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+	word-wrap: break-word;
+}
+.displayCircleHeader h4{
+	font-size: 20px;
+	color: rgb(167, 167, 167);
+}
+.displayCircleFooter{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 90%;
+	padding: 0px 0px 10px 0px;
+}
+.displayCircleFooter h4{
+	font-size: 20px;
+	color: rgb(167, 167, 167);
+}
 
 .displaySmallCircle {
 	display: flex;
@@ -112,7 +152,7 @@
 	align-items: center;
 	height: 450px;
 	width: 450px;
-	background: rgb(24, 24, 24);
+/*	background: rgb(24, 24, 24);*/
 	position: relative;
 }
 .displayMediumCircle {
@@ -121,16 +161,16 @@
 	align-items: center;
 	height: 650px;
 	width: 650px;
-	background: rgb(24, 24, 24);
+/*	background: rgb(24, 24, 24);*/
 	position: relative;
 }
 .displayLargeCircle {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 800px;
-	width: 800px;
-	background: rgb(24, 24, 24);
+	height: 750px;
+	width: 750px;
+/*	background: rgb(24, 24, 24);*/
 	position: relative;
 }
 

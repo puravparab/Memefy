@@ -89,7 +89,7 @@ const Circle = () => {
 			data.artists.short_term.map((artist, id) => {
 				artist_list.push(artist.image)
 			})
-			renderData = () => {return <DisplayCircle artist_list={artist_list} rings={sliderValue}/>}
+			renderData = () => {return <DisplayCircle artist_list={artist_list} rings={sliderValue} range={"Last Month"}/>}
 		}
 		setDisplayCircle1(renderData)
 
@@ -100,7 +100,7 @@ const Circle = () => {
 			data.artists.medium_term.map((artist, id) => {
 				artist_list.push(artist.image)
 			})
-			renderData = () => {return (<DisplayCircle artist_list={artist_list} rings={sliderValue}/>)}
+			renderData = () => {return (<DisplayCircle artist_list={artist_list} rings={sliderValue} range={"Last 6 Months"}/>)}
 		}
 		setDisplayCircle2(renderData)
 
@@ -111,7 +111,7 @@ const Circle = () => {
 			data.artists.long_term.map((artist, id) => {
 				artist_list.push(artist.image)
 			})
-			renderData = () => {return <DisplayCircle artist_list={artist_list} rings={sliderValue}/>}
+			renderData = () => {return <DisplayCircle artist_list={artist_list} rings={sliderValue} range={"All Time"}/>}
 		}
 		setDisplayCircle3(renderData)
 

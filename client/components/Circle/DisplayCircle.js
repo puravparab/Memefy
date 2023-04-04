@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
+import Spotify from '../../public/assets/images/spotify_green.png'
 import styles from '../../styles/circle.module.css'
 
 const DisplayCircle = ( props ) => {
@@ -67,44 +68,56 @@ const DisplayCircle = ( props ) => {
 	}
 
 	return (
-		<div className={ringClassList[rings - 1]}>
-			{rings === 1 && 
-				<div className={styles.innerRing}>
-					{ring1}
-					<div className={styles.ringCenter}>
-						<Image src={props.artist_list[0]} width={120} height={120} alt="user's image"/>
-					</div>
-				</div>
-			}
-			{rings === 2 && 
-				<>
-					<div className={styles.middleRing}>
-						{ring2}
-					</div>
+		<div className={styles.displayCircleContainer}>
+			<div className={styles.displayCircleHeader}>
+				<h3>NP's Inner Circle</h3>
+				<h4>{props.range}</h4>
+			</div>
+
+			<div className={ringClassList[rings - 1]}>
+				{rings === 1 && 
 					<div className={styles.innerRing}>
 						{ring1}
 						<div className={styles.ringCenter}>
 							<Image src={props.artist_list[0]} width={120} height={120} alt="user's image"/>
 						</div>
 					</div>
-				</>
-			}
-			{rings === 3 && 
-				<>
-					<div className={styles.outerRing}>
-						{ring3}
-					</div>
-					<div className={styles.middleRing}>
-						{ring2}
-					</div>
-					<div className={styles.innerRing}>
-						{ring1}
-						<div className={styles.ringCenter}>
-							<Image src={props.artist_list[0]} width={120} height={120} alt="user's image"/>
+				}
+				{rings === 2 && 
+					<>
+						<div className={styles.middleRing}>
+							{ring2}
 						</div>
-					</div>
-				</>
-			}
+						<div className={styles.innerRing}>
+							{ring1}
+							<div className={styles.ringCenter}>
+								<Image src={props.artist_list[0]} width={120} height={120} alt="user's image"/>
+							</div>
+						</div>
+					</>
+				}
+				{rings === 3 && 
+					<>
+						<div className={styles.outerRing}>
+							{ring3}
+						</div>
+						<div className={styles.middleRing}>
+							{ring2}
+						</div>
+						<div className={styles.innerRing}>
+							{ring1}
+							<div className={styles.ringCenter}>
+								<Image src={props.artist_list[0]} width={120} height={120} alt="user's image"/>
+							</div>
+						</div>
+					</>
+				}
+			</div>
+
+			<div className={styles.displayCircleFooter}>
+				<Image src={Spotify} width={133} height={40} alt="spotify logo"/>
+				<h4>memefy.app/circle</h4>
+			</div>
 		</div>
 	)
 }
