@@ -33,6 +33,9 @@
 	text-align: center;
 	line-height: 1.6rem;
 }
+.navbar .active{
+	color: white;
+}
 .navbar a:hover{
 	color: white;
 	transition: 0.2s;
