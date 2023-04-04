@@ -7,6 +7,7 @@ const DisplayCircle = ( props ) => {
 	const itemLimit = [6, 12, 12]
 	const [numArtists, setNumArtists] = useState(props.artist_list.length)
 	const [rings, setRings] = useState(3) 
+	const ringClassList = [styles.displaySmallCircle, styles.displayMediumCircle, styles.displayLargeCircle]
 	const [ring1, setRing1] = useState('')
 	const [ring2, setRing2] = useState('')
 	const [ring3, setRing3] = useState('')
@@ -26,7 +27,7 @@ const DisplayCircle = ( props ) => {
 			]
 			if (id < 6){
 				return (
-					<div className={classes[id]}>
+					<div className={classes[id]} key={id}>
 						<Image src={img_src} width={110} height={110} alt={"artist " + id} />
 					</div>
 				)
@@ -40,7 +41,7 @@ const DisplayCircle = ( props ) => {
 				]
 				if (id >= 6 && id < 18){
 					return (
-						<div className={classes[id - 6]}>
+						<div className={classes[id - 6]} key={id}>
 							<Image src={img_src} width={90} height={90} alt={"artist " + id}/>
 						</div>
 					)
@@ -55,7 +56,7 @@ const DisplayCircle = ( props ) => {
 					]
 					if (id >= 18 && id < 30){
 						return (
-							<div className={classes[id - 18]}>
+							<div className={classes[id - 18]} key={id}>
 								<Image src={img_src} width={80} height={80} alt={"artist " + id}/>
 							</div>
 						)
@@ -66,7 +67,7 @@ const DisplayCircle = ( props ) => {
 	}
 
 	return (
-		<div className={styles.displayCircle}>
+		<div className={ringClassList[rings - 1]}>
 			{rings === 1 && 
 				<div className={styles.innerRing}>
 					{ring1}

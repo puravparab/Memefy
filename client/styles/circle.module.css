@@ -106,7 +106,25 @@
 
 /* CIRCLE */
 
-.displayCircle {
+.displaySmallCircle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 450px;
+	width: 450px;
+	background: rgb(24, 24, 24);
+	position: relative;
+}
+.displayMediumCircle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 650px;
+	width: 650px;
+	background: rgb(24, 24, 24);
+	position: relative;
+}
+.displayLargeCircle {
 	display: flex;
 	justify-content: center;
 	align-items: center;

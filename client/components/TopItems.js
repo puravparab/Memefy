@@ -113,7 +113,7 @@ const TopItems = () => {
 		else{
 			renderData = data.artists.short_term.map((artist, id) => {
 				return (
-					<ArtistCard id={id} artist={artist}/>
+					<ArtistCard id={id} artist={artist} key={id}/>
 				)
 			})
 		}
@@ -135,7 +135,7 @@ const TopItems = () => {
 		else{
 			renderData = data.artists.medium_term.map((artist, id) => {
 				return (
-					<ArtistCard id={id} artist={artist}/>
+					<ArtistCard id={id} artist={artist} key={id}/>
 				)
 			})
 		}
@@ -157,7 +157,7 @@ const TopItems = () => {
 		else{
 			renderData = data.artists.long_term.map((artist, id) => {
 				return (
-					<ArtistCard id={id} artist={artist}/>
+					<ArtistCard id={id} artist={artist} key={id}/>
 				)
 			})
 		}
@@ -181,7 +181,7 @@ const TopItems = () => {
 		else{
 			renderData = data.tracks.short_term.map((track, id) => {
 				return (
-					<TrackCard id={id} track={track} playAudio={playAudio} stopAudio={stopAudio}/>
+					<TrackCard id={id} track={track} playAudio={playAudio} stopAudio={stopAudio} key={id}/>
 				)
 			})
 		}
@@ -204,7 +204,7 @@ const TopItems = () => {
 		else{
 			renderData = data.tracks.medium_term.map((track, id) => {
 				return (
-					<TrackCard id={id} track={track} playAudio={playAudio} stopAudio={stopAudio}/>
+					<TrackCard id={id} track={track} playAudio={playAudio} stopAudio={stopAudio} key={id}/>
 				)
 			})
 		}
@@ -227,7 +227,7 @@ const TopItems = () => {
 		else{
 			renderData = data.tracks.long_term.map((track, id) => {
 				return (
-					<TrackCard id={id} track={track} playAudio={playAudio} stopAudio={stopAudio}/>
+					<TrackCard id={id} track={track} playAudio={playAudio} stopAudio={stopAudio} key={id}/>
 				)
 			})
 		}
