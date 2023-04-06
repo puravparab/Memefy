@@ -29,6 +29,7 @@ const CirclePage = () => {
 		<>
 			<Head>
 				<title>your inner circle | Memefy</title>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" id="viewportMeta" />
 				<meta 
 					name="description" 
 					content="The artists in your inner circle"

@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg } from 'html-to-image';
 
 import Spotify from '../../public/assets/images/spotify_green.png'
 import styles from '../../styles/circle.module.css'
@@ -12,6 +14,9 @@ const DisplayCircle = ( props ) => {
 	const [ring1, setRing1] = useState('')
 	const [ring2, setRing2] = useState('')
 	const [ring3, setRing3] = useState('')
+
+	const ref = useRef(null);
+	const [imageDataUrl, setImageDataUrl] = useState('')
 
 	useEffect(()=>{
 		populateRings()
@@ -67,58 +72,113 @@ const DisplayCircle = ( props ) => {
 		}
 	}
 
+	// Convert to png
+	const handleDownload = () => {
+		if (ref.current === null) {
+			return
+		}
+		// var vp = document.getElementById("viewportMeta").getAttribute("content")
+		// document.getElementById("viewportMeta").setAttribute("content", "width=1920")
+		// window.scrollTo(0, 0)
+		// const dpr = window.devicePixelRatio
+		// console.log("dpr", dpr)
+// 		const element = ref.current;
+// 		const width = element.offsetWidth;
+// 		const height = element.offsetHeight;
+// 		// 
+// 
+// 		html2canvas(ref.current, {width, height})
+// 			.then((canvas) => {
+// 				console.log(canvas)
+// 				document.body.appendChild(canvas);
+// 				console.log(window.outerWidth)
+// 				console.log(window.outerHeight)
+// 				const dataURI = canvas.toDataURL('image/jpeg')
+// 				setImageDataUrl(dataURI)
+// 				// const link = document.createElement('a');
+// 				// link.download = 'memefy-circle.png';
+// 				// link.href = canvas.toDataURL('image/png');
+// 				// link.click();
+// 				// document.getElementById("viewportMeta").setAttribute("content", vp);
+// 			})
+		let vp = document.getElementById("viewportMeta").getAttribute("content")
+		document.getElementById("viewportMeta").setAttribute("content", "width=1920")
+
+		htmlToImage.toPng(ref.current)
+			.then(function (dataUrl) {
+				setImageDataUrl(dataUrl)
+				document.getElementById("viewportMeta").setAttribute("content", vp);
+				// Clean up any canvas elements added to the DOM
+			  const canvasElements = document.getElementsByTagName('canvas');
+			  Array.from(canvasElements).forEach(canvasElement => {
+			  	console.log("ASd")
+			    canvasElement.remove();
+			  })
+			})
+			.catch(function (error) {
+				console.error('oops, something went wrong!', error);
+			});
+	}
+
 	return (
-		<div className={styles.displayCircleContainer}>
-			<div className={styles.displayCircleHeader}>
-				<h3>NP's Inner Circle</h3>
-				<h4>{props.range}</h4>
-			</div>
+		<>
+			<div className={styles.displayCircleContainer} ref={ref}>
+				<div className={styles.displayCircleHeader}>
+					<h3>NP&apos;s Inner Circle</h3>
+					<h4>{props.range}</h4>
+				</div>
 
-			<div className={ringClassList[rings - 1]}>
-				{rings === 1 && 
-					<div className={styles.innerRing}>
-						{ring1}
-						<div className={styles.ringCenter}>
-							<Image src={props.artist_list[0]} width={120} height={120} alt="user's image"/>
-						</div>
-					</div>
-				}
-				{rings === 2 && 
-					<>
-						<div className={styles.middleRing}>
-							{ring2}
-						</div>
+				<div className={ringClassList[rings - 1]}>
+					{rings === 1 && 
 						<div className={styles.innerRing}>
 							{ring1}
 							<div className={styles.ringCenter}>
 								<Image src={props.artist_list[0]} width={120} height={120} alt="user's image"/>
 							</div>
 						</div>
-					</>
-				}
-				{rings === 3 && 
-					<>
-						<div className={styles.outerRing}>
-							{ring3}
-						</div>
-						<div className={styles.middleRing}>
-							{ring2}
-						</div>
-						<div className={styles.innerRing}>
-							{ring1}
-							<div className={styles.ringCenter}>
-								<Image src={props.artist_list[0]} width={120} height={120} alt="user's image"/>
+					}
+					{rings === 2 && 
+						<>
+							<div className={styles.middleRing}>
+								{ring2}
 							</div>
-						</div>
-					</>
-				}
+							<div className={styles.innerRing}>
+								{ring1}
+								<div className={styles.ringCenter}>
+									<Image src={props.artist_list[0]} width={120} height={120} alt="user's image"/>
+								</div>
+							</div>
+						</>
+					}
+					{rings === 3 && 
+						<>
+							<div className={styles.outerRing}>
+								{ring3}
+							</div>
+							<div className={styles.middleRing}>
+								{ring2}
+							</div>
+							<div className={styles.innerRing}>
+								{ring1}
+								<div className={styles.ringCenter}>
+									<Image src={props.artist_list[0]} width={120} height={120} alt="user's image"/>
+								</div>
+							</div>
+						</>
+					}
+				</div>
+
+				<div className={styles.displayCircleFooter}>
+					<Image src={Spotify} width={133} height={40} alt="spotify logo"/>
+					<h4>memefy.app/circle</h4>
+				</div>
 			</div>
 
-			<div className={styles.displayCircleFooter}>
-				<Image src={Spotify} width={133} height={40} alt="spotify logo"/>
-				<h4>memefy.app/circle</h4>
+			<img src={imageDataUrl} className={styles.displayCircleImage} />
+			<div>
+				<button onClick={handleDownload}>Download as PNG</button>
 			</div>
-		</div>
+		</>
 	)
 }
 
