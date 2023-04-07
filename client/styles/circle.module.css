@@ -115,9 +115,7 @@
 	padding: 0px 25px;
 }
 .displayCircleImage{
-/*	display: none;*/
-		width: 800px;
-		height: auto;
+	display: none;
 }
 @media (max-width: 850px){
 	.displayCircleContainer{
@@ -192,6 +190,10 @@
 	position: relative;
 }
 
+.ringCenter img{
+	width: 120px;
+	height: 120px;
+}
 /* INNER CIRCLE */
 .innerRing{
 	display: flex;
@@ -214,6 +216,8 @@
 
 .innerRing img{
 	border-radius: 50%;
+	width: 110px;
+	height: 110px;
 }
 
 /* MIDDLE RING */
@@ -245,6 +249,8 @@
 
 .middleRing img{
 	border-radius: 50%;
+	width: 90px;
+	height: 90px;
 }
 
 /* OUTER RING */
@@ -276,4 +282,51 @@
 
 .outerRing img{
 	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+}
+
+/* Buttons */
+.circleBtnContainer{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px 0px;
+}
+
+.circleBtnContainer button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 25px;
+	color: white;
+	background: rgb(30, 215, 96);
+	margin: 50px 0px;
+	border-radius: 10px;
+	padding: 5px 20px;
+	cursor: pointer;
+}
+.circleBtnContainer button:hover{
+	background: rgb(41, 205, 99);
+}
+
+.circleBtnContainer .generateBtn{
+	display: none;
+}
+
+.circleBtnContainer .downloadSmallBtn{
+	display: none;
+}
+
+@media (max-width: 850px){
+	.circleBtnContainer .generateBtn{
+		display: flex;
+	}
+	.circleBtnContainer .downloadSmallBtn{
+		display: flex;
+	}
+	.circleBtnContainer .downloadLargeBtn{
+		display: none;
+	}
 }
