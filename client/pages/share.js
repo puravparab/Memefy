@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 const Share = () => {
 	const router = useRouter()
 	useEffect(()=>{
-		router.push('/')
+		router.push('/circle')
 	},[])
 }
 export default Share

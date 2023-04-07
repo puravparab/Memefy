@@ -32,15 +32,17 @@ const CirclePage = () => {
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" id="viewportMeta" />
 				<meta 
 					name="description" 
-					content="The artists in your inner circle"
+					content="Create your spotify inner circle."
 				/>
-				<link rel="canonical" href="/" />
+				{/* <link rel="canonical" href="/" /> */}
 				<meta property="og:title" content=">Your inner circle | Memefy" />
-				<meta property="og:url" content="" />
+				<meta property="og:url" content="https://memefy.app/circle" />
 				<meta 
 					property="og:description" 
-					content="The artists in your inner circle"
+					content="Create your spotify inner circle."
 				/>
+				<meta name="twitter:site" content="https://memefy.app/circle" />
+				<meta name="twitter:description" content="Create your spotify inner circle." />
 			</Head>
 
 			<div className={styles.circlePageContainer}>

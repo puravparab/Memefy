@@ -11,7 +11,6 @@ function MyApp({ Component, pageProps }) {
 				<meta name="author" content="" />
 				<meta name="twitter:card" content="summary" />
 				<meta name="twitter:image" content="" />
-				<meta name="twitter:site" content="" />
 				<meta name="twitter:creator" content="" />
 				<meta property="og:type" content="website" />
 				<meta property="og:image" content="" />
