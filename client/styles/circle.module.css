@@ -306,6 +306,7 @@
 	border-radius: 10px;
 	padding: 5px 20px;
 	cursor: pointer;
+	border: none;
 }
 .circleBtnContainer button:hover{
 	background: rgb(41, 205, 99);
