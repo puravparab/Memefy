@@ -5,6 +5,7 @@ import getConfig from 'next/config';
 import axios from 'axios'
 import { parse } from 'cookie';
 
+import ArtistList from './ArtistList.js'
 import DisplayCircle from './DisplayCircle.js'
 import styles from '../../styles/circle.module.css'
 
@@ -124,31 +125,9 @@ const Circle = () => {
 
 	// Render artist List
 	const renderArtistList = (data, num_rings) => {
-		let renderData
-		const itemLimit = [6, 18, 30]
-
-		renderData = data.artists.short_term.map((artist, id)=>{
-			if (id < itemLimit[num_rings - 1]){
-				return (
-					<div className={styles.listCell}><h4>{id + 1}</h4><h4>{artist.name}</h4></div>
-				)
-			}
-		})
-		setArtistListS(renderData)
-
-		renderData = data.artists.medium_term.map((artist, id)=>{
-			if (id < itemLimit[num_rings - 1]){
-				return (<div className={styles.listCell}><h4>{id + 1}</h4><h4>{artist.name}</h4></div>)
-			}
-		})
-		setArtistListM(renderData)
-
-		renderData = data.artists.long_term.map((artist, id)=>{
-			if (id < itemLimit[num_rings - 1]){
-				return (<div className={styles.listCell}><h4>{id + 1}</h4><h4>{artist.name}</h4></div>)
-			}
-		})
-		setArtistListL(renderData)
+		setArtistListS(() => {return (<ArtistList artists={data.artists.short_term} ring={num_rings}/>)})
+		setArtistListM(() => {return (<ArtistList artists={data.artists.medium_term} ring={num_rings}/>)})
+		setArtistListL(() => {return (<ArtistList artists={data.artists.long_term} ring={num_rings}/>)})
 	}
 
 	return (
