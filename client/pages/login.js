@@ -6,7 +6,7 @@ const LoginPage = () => {
 	return (
 		<>
 			<Head>
-				<title>Loging | Memefy</title>
+				<title>Login | Memefy</title>
 				<meta 
 					name="description" 
 					content="Create your spotify inner circle. Find out you top tracks and artists on spotify."

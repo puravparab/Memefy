@@ -302,7 +302,7 @@
 	font-size: 25px;
 	color: white;
 	background: rgb(30, 215, 96);
-	margin: 50px 0px;
+	margin: 30px 0px 50px 0px;
 	border-radius: 10px;
 	padding: 5px 20px;
 	cursor: pointer;
@@ -330,4 +330,25 @@
 	.circleBtnContainer .downloadLargeBtn{
 		display: none;
 	}
+}
+
+/* ARTIST LIST */
+.circleArtistList{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	max-width: 800px;
+	width: 90%;
+}
+
+.circleArtistList .listCell{
+	display: flex;
+	flex-direction: row;
+	gap: 0px 10px;
+}
+
+.circleArtistList .listCell h4{
+	font-size: 20px;
+	color: rgb(205, 204, 204);
 }

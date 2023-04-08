@@ -14,7 +14,6 @@ const Circle = () => {
 	const router = useRouter()
 	// check if component should render
 	const [render, setRender] = useState(true)
-	const [imageSrc, setImageSrc] = useState("")
 
 	// What items should be displayed
 	const [range, setRange] = useState('six')
@@ -35,6 +34,9 @@ const Circle = () => {
 	const [displayCircle1, setDisplayCircle1] = useState('')
 	const [displayCircle2, setDisplayCircle2] = useState('')
 	const [displayCircle3, setDisplayCircle3] = useState('')
+	const [artistListS, setArtistListS] = useState('')
+	const [artistListM, setArtistListM] = useState('')
+	const [artistListL, setArtistListL] = useState('')
 
 	useEffect(()=>{
 		get_top_items()
@@ -53,6 +55,7 @@ const Circle = () => {
 		// If top items are already stored
 		if (top_items){
 			renderCircle(top_items)
+			renderArtistList(top_items, sliderValue)
 			setRender(true)
 		}
 		else{
@@ -66,11 +69,13 @@ const Circle = () => {
 					// If top items are already stored
 					if (top_items){
 						renderCircle(top_items)
+						renderArtistList(top_items, sliderValue)
 						setRender(true)
 					}
 				})
 				.catch(function (error){
 					console.log(error)
+					setRender(false)
 				})
 			} else{
 				router.push('/login')
@@ -78,6 +83,7 @@ const Circle = () => {
 		}
 	}
 
+	// Render circle
 	const renderCircle = (data) => {
 		let renderData
 		const noData = () => {return  (<div className={styles.noItemText}>Listen to more songs!</div>)}
@@ -114,7 +120,35 @@ const Circle = () => {
 			renderData = () => {return <DisplayCircle artist_list={artist_list} rings={sliderValue} range={"All Time"}/>}
 		}
 		setDisplayCircle3(renderData)
+	}
 
+	// Render artist List
+	const renderArtistList = (data, num_rings) => {
+		let renderData
+		const itemLimit = [6, 18, 30]
+
+		renderData = data.artists.short_term.map((artist, id)=>{
+			if (id < itemLimit[num_rings - 1]){
+				return (
+					<div className={styles.listCell}><h4>{id + 1}</h4><h4>{artist.name}</h4></div>
+				)
+			}
+		})
+		setArtistListS(renderData)
+
+		renderData = data.artists.medium_term.map((artist, id)=>{
+			if (id < itemLimit[num_rings - 1]){
+				return (<div className={styles.listCell}><h4>{id + 1}</h4><h4>{artist.name}</h4></div>)
+			}
+		})
+		setArtistListM(renderData)
+
+		renderData = data.artists.long_term.map((artist, id)=>{
+			if (id < itemLimit[num_rings - 1]){
+				return (<div className={styles.listCell}><h4>{id + 1}</h4><h4>{artist.name}</h4></div>)
+			}
+		})
+		setArtistListL(renderData)
 	}
 
 	return (
@@ -141,6 +175,12 @@ const Circle = () => {
 					{range == 'one' && displayCircle1}
 					{range == 'six' && displayCircle2}
 					{range == 'all' && displayCircle3}
+
+					<div className={styles.circleArtistList}>
+						{range == 'one' && artistListS}
+						{range == 'six' && artistListM}
+						{range == 'all' && artistListL}
+					</div>
 				</>
 				: 
 				""
