@@ -13,7 +13,7 @@ from . import utils
 # Request authorization from spotify
 @api_view(['GET'])
 def authenticate(request, format=None):
-	auth_scopes = 'user-top-read'
+	auth_scopes = 'user-top-read user-read-email user-read-private'
 	url = Request('GET', 'https://accounts.spotify.com/authorize',
 		params={
 			'client_id': settings.SPOTIFY_CLIENT_ID,
@@ -58,14 +58,26 @@ def get_tokens(request, format=None):
 
 # Get user's spotify profile
 @api_view(['GET'])
-def get_user_profile(request, format=None):
+def get_user_profile(request, access_token, format=None):
+	BASE_URL = "https://api.spotify.com/v1/me"
+	headers = {
+		'Content-type': 'application/json',
+		'Authorization': 'Bearer ' + access_token
+	}
+	response = get(BASE_URL, headers=headers)
+	if (response.ok):
+		response = response.json()
+		return Response({
+			'display_name': response["display_name"],
+			'image': response["images"][0]["url"]
+		}, status=status.HTTP_200_OK)
+	else:
+		return Response({'error': 'spotify user profile request', 'details': response.json()}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 	return Response({}, status=status.HTTP_200_OK)
 
 # Get top tracks/artists for long_term, medium_term and short_term
 @api_view(['GET'])
 def get_user_top_items(request, access_token, format=None):
-	access_token = access_token
-	
 	BASE_URL = "https://api.spotify.com/v1/me/top/"
 	headers = {
 		'Content-type': 'application/json',

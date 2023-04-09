@@ -52,26 +52,47 @@ const Circle = () => {
 		const cookies = parse(document.cookie);
 		const access_token =  cookies.access_token
 		let top_items = JSON.parse(sessionStorage.getItem('top_items'))
+		let user_profile = JSON.parse(sessionStorage.getItem('user_profile'))
 
 		// If top items are already stored
-		if (top_items){
-			renderCircle(top_items)
+		if (top_items && user_profile){
+			renderCircle(top_items, user_profile)
 			renderArtistList(top_items, sliderValue)
 			setRender(true)
 		}
 		else{
 			// If authenticated and access token available
 			if (access_token){
-				const url = publicRuntimeConfig.SERVER_URL + "api/spotify/top-items/" + access_token
+				// Populate top items
+				let url = publicRuntimeConfig.SERVER_URL + "api/spotify/top-items/" + access_token
 				axios.get(url)
 				.then(function (res){
 					sessionStorage.setItem("top_items", JSON.stringify(res.data))
 					let top_items = JSON.parse(sessionStorage.getItem('top_items'))
-					// If top items are already stored
 					if (top_items){
-						renderCircle(top_items)
-						renderArtistList(top_items, sliderValue)
-						setRender(true)
+						// Get user profile
+						url = publicRuntimeConfig.SERVER_URL + "api/spotify/user-profile/" + access_token
+						axios.get(url)
+							.then(function (res){
+								sessionStorage.setItem("user_profile", JSON.stringify(res.data))
+								let user_profile = JSON.parse(sessionStorage.getItem('user_profile'))
+								// If user profile are already stored
+								if (user_profile){
+									renderCircle(top_items, user_profile)
+									renderArtistList(top_items, sliderValue)
+									setRender(true)
+								}
+								else{
+									// TODO
+								}
+							})
+							.catch(function (error){
+								console.log(error)
+								setRender(false)
+							})
+					}
+					else{
+						// TODO
 					}
 				})
 				.catch(function (error){
@@ -85,7 +106,7 @@ const Circle = () => {
 	}
 
 	// Render circle
-	const renderCircle = (data) => {
+	const renderCircle = (data, user_profile) => {
 		let renderData
 		const noData = () => {return  (<div className={styles.noItemText}>Listen to more songs!</div>)}
 
@@ -96,7 +117,7 @@ const Circle = () => {
 			data.artists.short_term.map((artist, id) => {
 				artist_list.push(artist.image)
 			})
-			renderData = () => {return <DisplayCircle artist_list={artist_list} rings={sliderValue} range={"Last Month"}/>}
+			renderData = () => {return <DisplayCircle artist_list={artist_list} user_profile={user_profile} rings={sliderValue} range={"Last Month"}/>}
 		}
 		setDisplayCircle1(renderData)
 
@@ -107,7 +128,7 @@ const Circle = () => {
 			data.artists.medium_term.map((artist, id) => {
 				artist_list.push(artist.image)
 			})
-			renderData = () => {return (<DisplayCircle artist_list={artist_list} rings={sliderValue} range={"Last 6 Months"}/>)}
+			renderData = () => {return (<DisplayCircle artist_list={artist_list} user_profile={user_profile} rings={sliderValue} range={"Last 6 Months"}/>)}
 		}
 		setDisplayCircle2(renderData)
 
@@ -118,7 +139,7 @@ const Circle = () => {
 			data.artists.long_term.map((artist, id) => {
 				artist_list.push(artist.image)
 			})
-			renderData = () => {return <DisplayCircle artist_list={artist_list} rings={sliderValue} range={"All Time"}/>}
+			renderData = () => {return <DisplayCircle artist_list={artist_list} user_profile={user_profile} rings={sliderValue} range={"All Time"}/>}
 		}
 		setDisplayCircle3(renderData)
 	}

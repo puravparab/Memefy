@@ -150,7 +150,7 @@ const DisplayCircle = ( props ) => {
 		<>
 			<div className={styles.displayCircleContainer} ref={ref}>
 				<div className={styles.displayCircleHeader}>
-					<h3>NP&apos;s Inner Circle</h3>
+					<h3>{props.user_profile.display_name}&apos;s Inner Circle</h3>
 					<h4>{props.range}</h4>
 				</div>
 
@@ -160,7 +160,7 @@ const DisplayCircle = ( props ) => {
 							{ring1}
 							<div className={styles.ringCenter}>
 								{/* <Image src={props.artist_list[0]} width={120} height={120} alt="user's image"/> */}
-								<img src={props.artist_list[0]} alt="user's image" />
+								<img src={props.user_profile.image} alt="user's image" />
 							</div>
 						</div>
 					}
@@ -173,7 +173,7 @@ const DisplayCircle = ( props ) => {
 								{ring1}
 								<div className={styles.ringCenter}>
 									{/* <Image src={props.artist_list[0]} width={120} height={120} alt="user's image"/> */}
-									<img src={props.artist_list[0]} alt="user's image" />
+									<img src={props.user_profile.image} alt="user's image" />
 								</div>
 							</div>
 						</>
@@ -190,7 +190,7 @@ const DisplayCircle = ( props ) => {
 								{ring1}
 								<div className={styles.ringCenter}>
 									{/* <Image src={props.artist_list[0]} width={120} height={120} alt="user's image"/> */}
-									<img src={props.artist_list[0]} alt="user's image" />
+									<img src={props.user_profile.image} alt="user's image" />
 								</div>
 							</div>
 						</>
