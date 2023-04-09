@@ -146,9 +146,15 @@ const Circle = () => {
 
 	// Render artist List
 	const renderArtistList = (data, num_rings) => {
-		setArtistListS(() => {return (<ArtistList artists={data.artists.short_term} ring={num_rings}/>)})
-		setArtistListM(() => {return (<ArtistList artists={data.artists.medium_term} ring={num_rings}/>)})
-		setArtistListL(() => {return (<ArtistList artists={data.artists.long_term} ring={num_rings}/>)})
+		const noData = () => {return  (<div className={styles.noItemText}></div>)}
+		if (data.artists.short_term.length == 0) {setArtistListS(noData)}
+		else{setArtistListS(() => {return (<ArtistList artists={data.artists.short_term} ring={num_rings}/>)})}
+
+		if (data.artists.medium_term.length == 0) {setArtistListM(noData)}
+		else{setArtistListM(() => {return (<ArtistList artists={data.artists.medium_term} ring={num_rings}/>)})}
+
+		if (data.artists.long_term.length == 0) {setArtistListL(noData)}
+		else{setArtistListL(() => {return (<ArtistList artists={data.artists.long_term} ring={num_rings}/>)})}
 	}
 
 	return (
