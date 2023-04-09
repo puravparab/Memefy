@@ -1,3 +1,4 @@
+import { AnalyticsWrapper } from './Analytics.js';
 import styles from '../styles/layout.module.css'
 
 const Layout = ({ children }) => {
@@ -8,6 +9,8 @@ const Layout = ({ children }) => {
 					{ children }
 				</div>
 			</div>
+
+			<AnalyticsWrapper />
 		</>
 	)
 }
