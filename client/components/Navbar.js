@@ -11,10 +11,11 @@ const Navbar = () => {
 
 	return (
 		<div className={styles.navbar}>
-			{/* <Link href='/listfy'>Listfy</Link> */}
 			<Link href='/' className={isActiveLink('/')}>Top</Link>
-			{/* <Link href='/iceberg'>Iceberg</Link> */}
+			<Link href='/square' className={isActiveLink('/square')}>Square</Link>
 			<Link href='/circle' className={isActiveLink('/circle')}>Inner circle</Link>
+			{/* <Link href='/listfy'>Listfy</Link> */}
+			{/* <Link href='/iceberg'>Iceberg</Link> */}
 			{/* <Link href='/other'>Templates</Link> */}
 		</div>
 	)

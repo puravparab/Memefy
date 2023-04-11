@@ -4,11 +4,10 @@ import Head from 'next/head'
 
 import { parse } from 'cookie';
 import Header from '../components/Header.js'
-import Circle from '../components/Circle/Circle.js'
 import Footer from '../components/Footer.js'
-import styles from '../styles/circle.module.css'
+import styles from '../styles/square.module.css'
 
-const CirclePage = () => {
+const SquarePage = () => {
 	const router = useRouter()
 
 	useEffect(() => {
@@ -21,7 +20,7 @@ const CirclePage = () => {
 			sessionStorage.removeItem('previous_page')
 		}
 		else{
-			sessionStorage.setItem("previous_page", '/circle')
+			sessionStorage.setItem("previous_page", '/square')
 			router.push('/login')
 		}
 	}, [])
@@ -29,30 +28,29 @@ const CirclePage = () => {
 	return (
 		<>
 			<Head>
-				<title>your inner circle | Memefy</title>
+				<title>Square | Memefy</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" id="viewportMeta" />
 				<meta 
 					name="description" 
-					content="Create and share your spotify inner circle."
+					content="Create and share your spotify squares."
 				/>
 				{/* <link rel="canonical" href="/" /> */}
-				<meta property="og:title" content=">Your inner circle | Memefy" />
-				<meta property="og:url" content="https://memefy.app/circle" />
+				<meta property="og:title" content=">Square | Memefy" />
+				<meta property="og:url" content="https://memefy.app/square" />
 				<meta 
 					property="og:description" 
-					content="Create your spotify inner circle."
+					content="Create and share your spotify squares"
 				/>
-				<meta name="twitter:site" content="https://memefy.app/circle" />
-				<meta name="twitter:description" content="Create your spotify inner circle." />
+				<meta name="twitter:site" content="https://memefy.app/square" />
+				<meta name="twitter:description" content="Create and share your spotify squares" />
 			</Head>
 
-			<div className={styles.circlePageContainer}>
+			<div className={styles.squarePageContainer}>
 				<Header />
-				<Circle />
 				<Footer />
 			</div>
 		</>
 	)
 }
 
-export default CirclePage
+export default SquarePage
