@@ -4,6 +4,7 @@ import Head from 'next/head'
 
 import { parse } from 'cookie';
 import Header from '../components/Header.js'
+import Square from '../components/Square/Square.js'
 import Footer from '../components/Footer.js'
 import styles from '../styles/square.module.css'
 
@@ -47,6 +48,7 @@ const SquarePage = () => {
 
 			<div className={styles.squarePageContainer}>
 				<Header />
+				<Square />
 				<Footer />
 			</div>
 		</>

@@ -22,19 +22,19 @@ export const TrackCard = ( props ) => {
 		else{return(<>, {artist.name} </>)}
 	})
 	return (
-	<div className={styles.trackCard} key={props.id}>
-		<div className={styles.trackImg}>
-			<Image src={props.track.image} width={100} height={100} alt={props.track.name + " image"}
-				onMouseEnter={() => props.playAudio(props.track.preview_url)} onMouseLeave={() => props.stopAudio()}
-			/>
-		</div>
-		<div className={styles.trackCardContent}>
-			<div className={styles.trackRank}>{props.id + 1}.</div>
-			<div className={styles.trackDetails}>
-				<h4>{props.track.name}</h4>
-				<h5>{artists}</h5>
+		<div className={styles.trackCard} key={props.id}>
+			<div className={styles.trackImg}>
+				<Image src={props.track.image} width={100} height={100} alt={props.track.name + " image"}
+					onMouseEnter={() => props.playAudio(props.track.preview_url)} onMouseLeave={() => props.stopAudio()}
+				/>
+			</div>
+			<div className={styles.trackCardContent}>
+				<div className={styles.trackRank}>{props.id + 1}.</div>
+				<div className={styles.trackDetails}>
+					<h4>{props.track.name}</h4>
+					<h5>{artists}</h5>
+				</div>
 			</div>
 		</div>
-	</div>
-)
+	)
 }
