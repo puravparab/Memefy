@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import LoginBtn from '../components/LoginBtn.js'
+import Footer from '../components/Footer.js'
 import styles from '../styles/login.module.css'
 
 const LoginPage = () => {
@@ -24,6 +25,7 @@ const LoginPage = () => {
 				<div className={styles.loginInterface}>
 					<h1>Memefy</h1>
 					<LoginBtn />
+					<Footer />
 				</div>
 			</div>
 		</>

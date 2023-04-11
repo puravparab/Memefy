@@ -5,6 +5,7 @@ import Head from 'next/head'
 import { parse } from 'cookie';
 import Header from '../components/Header.js'
 import TopItems from '../components/TopItems.js'
+import Footer from '../components/Footer.js'
 import styles from '../styles/home.module.css'
 
 const Home = () => {
@@ -47,6 +48,7 @@ const Home = () => {
 			<div className={styles.homeContainer}>
 				<Header />
 				<TopItems />
+				<Footer />
 			</div>
 		</>
 	)
