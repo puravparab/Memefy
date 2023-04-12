@@ -3,7 +3,8 @@ import Image from 'next/image'
 import * as htmlToImage from 'html-to-image';
 import { toPng, toJpeg } from 'html-to-image';
 
-// import Spotify from '../../public/assets/images/spotify_green.png';
+
+import Spotify from '../../public/assets/images/spotify_green.png';
 import styles from '../../styles/circle.module.css';
 
 const DisplayCircle = ( props ) => {
@@ -198,7 +199,7 @@ const DisplayCircle = ( props ) => {
 				</div>
 
 				<div className={styles.displayCircleFooter}>
-					<img src="/assets/images/spotify_green.png" width={133} height={40} alt="spotify logo" />
+					<Image src={Spotify} width={133} height={40} alt="spotify logo" />
 					<h4>memefy.app/circle</h4>
 				</div>
 			</div>
