@@ -247,6 +247,7 @@
 	width: 80%;
 	margin: 10px 0px 20px 0px;
 }
+/*ARTIST*/
 .squareBottom .content .artistItem{
 	display: flex;
 	flex-direction: row;
@@ -262,6 +263,28 @@
 	font-size: 23px;
 	word-break: break-word;
 	color: rgb(205, 205, 205);
+}
+/*TRACK*/
+.squareBottom .content .trackItem{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 0px 12px; 
+}
+.squareBottom .content .trackItem h3{
+	font-size: 23px;
+	color: rgb(239, 239, 239);
+}
+.squareBottom .content .trackItem .trackItemContent h4{
+	font-size: 23px;
+	word-break: break-word;
+	color: rgb(239, 239, 239);
+}
+.squareBottom .content .trackItem .trackItemContent h5{
+	font-size: 15px;
+	word-break: break-word;
+	color: rgb(167, 167, 167);
 }
 
 /* CARD FOOTER */

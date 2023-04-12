@@ -128,21 +128,21 @@ const Square = () => {
 		// LAST MONTH
 		if (data.tracks.short_term.length == 0) {renderData = noData}
 		else{
-			renderData = () => {return (<TrackCard data={data.tracks.short_term} range={"Last Month"}/>)}
+			renderData = () => {return (<TrackCard data={data.tracks.short_term} user_profile={user_profile} range={"Last Month"}/>)}
 		}
 		setTrackCard1(renderData)
 
 		// LAST SIX MONTHS
 		if (data.tracks.medium_term.length == 0) {renderData = noData}
 		else{
-			renderData = () => {return (<TrackCard data={data.tracks.medium_term} range={"Last 6 Months"}/>)}
+			renderData = () => {return (<TrackCard data={data.tracks.medium_term} user_profile={user_profile} range={"Last 6 Months"}/>)}
 		}
 		setTrackCard2(renderData)
 
 		// ALL TIME
 		if (data.tracks.long_term.length == 0) {renderData = noData}
 		else{
-			renderData = () => {return (<TrackCard data={data.tracks.long_term} range={"All Time"} />)}
+			renderData = () => {return (<TrackCard data={data.tracks.long_term} user_profile={user_profile} range={"All Time"} />)}
 		}
 		setTrackCard3(renderData)
 	}
