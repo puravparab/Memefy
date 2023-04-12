@@ -198,7 +198,7 @@ const DisplayCircle = ( props ) => {
 				</div>
 
 				<div className={styles.displayCircleFooter}>
-					<Image src={"/assets/images/spotify_green.png"} width={133} height={40} alt="spotify logo" />
+					<img src="/assets/images/spotify_green.png" width="133" height="40" alt="spotify logo" />
 					<h4>memefy.app/circle</h4>
 				</div>
 			</div>
