@@ -9,6 +9,6 @@ module.exports = {
 		SERVER_URL:  process.env.SERVER_URL,
 	},
 	images: {
-		domains: ['i.scdn.co', 'memefy.app']
+		domains: ['i.scdn.co', 'www.memefy.app']
 	}
 }
