@@ -69,7 +69,7 @@ export const ArtistCard = (props) => {
 
 					<div className={styles.footer}>
 						<h4>memefy.app/list</h4>
-						<Image src="/assets/images/spotify_green.png" width={120} height={35} alt="spotify logo" />
+						<Image src={"/assets/images/spotify_green.png"} width={120} height={35} alt="spotify logo" />
 					</div>
 				</div>
 			)
@@ -203,7 +203,7 @@ export const TrackCard = (props) => {
 
 					<div className={styles.footer}>
 						<h4>memefy.app/list</h4>
-						<Image src="/assets/images/spotify_green.png" width={120} height={35} alt="spotify logo" />
+						<Image src={"/assets/images/spotify_green.png"} width={120} height={35} alt="spotify logo" />
 					</div>
 				</div>
 			)
