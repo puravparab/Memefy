@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import getConfig from 'next/config';
 import axios from 'axios'
 import { parse } from 'cookie';
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg } from 'html-to-image';
 
 import { ArtistCard, TrackCard} from './Card.js'
 import styles from '../../styles/square.module.css'
@@ -11,6 +13,8 @@ const { publicRuntimeConfig } = getConfig();
 
 const Square = () => {
 	const router = useRouter()
+	const ref = useRef(null);
+
 	const [render, setRender] = useState(false)
 
 	// What items should be displayed
@@ -21,12 +25,16 @@ const Square = () => {
 	const categoryChange = (c) => {
 		if (category === c){}
 		else{setCategory(c)}
+		setImageDataUrl('')
+		setImageGenerated(false)
 	}
 	// Change range
 	const rangeChange = (r) => {
 		if (r == 'one'){setRange(r)}
 		else if (r == 'six'){setRange(r)}
 		else {setRange(r)}
+		setImageDataUrl('')
+		setImageGenerated(false)
 	}
 
 	// Store rendered components to be displayed
@@ -36,6 +44,11 @@ const Square = () => {
 	const [ArtistCard1, setArtistCard1] = useState('')
 	const [ArtistCard2, setArtistCard2] = useState('')
 	const [ArtistCard3, setArtistCard3] = useState('')
+
+	// Holds url for generated image
+	const [imageDataUrl, setImageDataUrl] = useState('')
+	// Is a new image generated
+	const [imageGenerated, setImageGenerated] = useState(false)
 
 	useEffect(()=>{
 		get_top_items()
@@ -147,6 +160,68 @@ const Square = () => {
 		setTrackCard3(renderData)
 	}
 
+	// Convert to JPEG
+	const handleImageGeneration = () => {
+		if (ref.current === null) {
+			return
+		}
+		// Convert div to JPEG using htmlToImage
+		let vp = document.getElementById("viewportMeta").getAttribute("content")
+		document.getElementById("viewportMeta").setAttribute("content", "width=1920")
+		htmlToImage.toJpeg(ref.current)
+			.then(function (dataUrl) {
+				setImageDataUrl(dataUrl)
+				document.getElementById("viewportMeta").setAttribute("content", vp);
+				// Clean up any canvas elements added to the DOM
+				const canvasElements = document.getElementsByTagName('canvas')
+				Array.from(canvasElements).forEach(canvasElement => {
+					canvasElement.remove()
+				})
+				setImageGenerated(true)
+			})
+			.catch(function (error) {
+				console.error('oops, something went wrong!', error)
+				setImageGenerated(false)
+			});
+	}
+
+	// Download generated images
+	const handleDownload = () => {
+		const link = document.createElement('a');
+		link.download = 'memefy-list.png';
+		link.href = imageDataUrl
+		link.click();
+	}
+
+	// Convert to JPEG and download
+	const handleDownloadComplete = () => {
+		if (ref.current === null) {
+			return
+		}
+		// Convert div to JPEG using htmlToImage
+		let vp = document.getElementById("viewportMeta").getAttribute("content")
+		document.getElementById("viewportMeta").setAttribute("content", "width=1920")
+		htmlToImage.toJpeg(ref.current)
+			.then(function (dataUrl) {
+				setImageDataUrl(dataUrl)
+				document.getElementById("viewportMeta").setAttribute("content", vp);
+				// Clean up any canvas elements added to the DOM
+				const canvasElements = document.getElementsByTagName('canvas')
+				Array.from(canvasElements).forEach(canvasElement => {
+					canvasElement.remove()
+				})
+				setImageGenerated(true)
+				const link = document.createElement('a');
+				link.download = 'memefy-list.png';
+				link.href = dataUrl
+				link.click();
+			})
+			.catch(function (error) {
+				console.error('oops, something went wrong!', error)
+				setImageGenerated(false)
+			});
+	}
+
 	return (
 		<div className={styles.squareContainer}>
 			{render? 
@@ -164,19 +239,29 @@ const Square = () => {
 					</div>
 
 					<div className={styles.squareInterface}>
-						{category == 'artists'?
-							<>
-								{range == 'one' && ArtistCard1}
-								{range == 'six' && ArtistCard2}
-								{range == 'all' && ArtistCard3}
-							</>
-							:
-							<>
-								{range == 'one' && TrackCard1}
-								{range == 'six' && TrackCard2}
-								{range == 'all' && TrackCard3}
-							</>
-						}
+						<div className={styles.squareCardContainer} ref={ref}>
+							{category == 'artists'?
+								<>
+									{range == 'one' && ArtistCard1}
+									{range == 'six' && ArtistCard2}
+									{range == 'all' && ArtistCard3}
+								</>
+								:
+								<>
+									{range == 'one' && TrackCard1}
+									{range == 'six' && TrackCard2}
+									{range == 'all' && TrackCard3}
+								</>
+							}
+						</div>
+
+						{imageDataUrl && <img src={imageDataUrl} className={styles.displayImage} alt={"user's top " + {category}}/>}
+
+						<div className={styles.btnContainer}>
+							{!imageGenerated && <button onClick={handleImageGeneration} className={styles.generateBtn}>Generate</button>}
+							{imageGenerated && <button onClick={handleDownload} className={styles.downloadSmallBtn}>Download</button>}
+							<button onClick={handleDownloadComplete} className={styles.downloadLargeBtn}>Download</button>
+						</div>
 					</div>
 				</>
 				: ""

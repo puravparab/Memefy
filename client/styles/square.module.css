@@ -137,6 +137,22 @@
 	margin: 40px 0px;
 }
 
+.squareCardContainer{}
+.displayImage{
+	display: none;
+}
+@media (max-width: 850px){
+	.squareCardContainer{
+		left: -1000px;
+		position: absolute;
+	}
+	.displayImage{
+		display: flex;
+		width: 90%;
+		height: auto;
+	}
+}
+
 /* SQUARE CARD */
 .squareCard{
 	display: flex;
@@ -257,12 +273,12 @@
 }
 .squareBottom .content .artistItem h3{
 	font-size: 23px;
-	color: rgb(205, 205, 205);
+	color: rgb(239, 239, 239);
 }
 .squareBottom .content .artistItem h4{
 	font-size: 23px;
 	word-break: break-word;
-	color: rgb(205, 205, 205);
+	color: rgb(239, 239, 239);
 }
 /*TRACK*/
 .squareBottom .content .trackItem{
@@ -300,4 +316,48 @@
 .squareBottom .footer h4{
 	font-size: 20px;
 	color: rgb(167, 167, 167);
+}
+
+/* Buttons */
+.BtnContainer{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px 0px;
+}
+
+.btnContainer button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 25px;
+	color: white;
+	background: rgb(30, 215, 96);
+	margin: 30px 0px 0px 0px;
+	border-radius: 10px;
+	padding: 5px 20px;
+	cursor: pointer;
+	border: none;
+}
+.btnContainer button:hover{
+	background: rgb(41, 205, 99);
+}
+.btnContainer .generateBtn{
+	display: none;
+}
+.btnContainer .downloadSmallBtn{
+	display: none;
+}
+
+@media (max-width: 850px){
+	.btnContainer .generateBtn{
+		display: flex;
+	}
+	.btnContainer .downloadSmallBtn{
+		display: flex;
+	}
+	.btnContainer .downloadLargeBtn{
+		display: none;
+	}
 }
