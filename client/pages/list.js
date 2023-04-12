@@ -21,7 +21,7 @@ const SquarePage = () => {
 			sessionStorage.removeItem('previous_page')
 		}
 		else{
-			sessionStorage.setItem("previous_page", '/square')
+			sessionStorage.setItem("previous_page", '/list')
 			router.push('/login')
 		}
 	}, [])
@@ -29,21 +29,21 @@ const SquarePage = () => {
 	return (
 		<>
 			<Head>
-				<title>Square | Memefy</title>
+				<title>List | Memefy</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" id="viewportMeta" />
 				<meta 
 					name="description" 
-					content="Create and share your spotify squares."
+					content="Create and share your top tracks or artists on spotify."
 				/>
 				{/* <link rel="canonical" href="/" /> */}
-				<meta property="og:title" content=">Square | Memefy" />
-				<meta property="og:url" content="https://memefy.app/square" />
+				<meta property="og:title" content=">List | Memefy" />
+				<meta property="og:url" content="https://memefy.app/list" />
 				<meta 
 					property="og:description" 
-					content="Create and share your spotify squares"
+					content="Create and share your top tracks or artists on spotify."
 				/>
-				<meta name="twitter:site" content="https://memefy.app/square" />
-				<meta name="twitter:description" content="Create and share your spotify squares" />
+				<meta name="twitter:site" content="https://memefy.app/list" />
+				<meta name="twitter:description" content="Create and share your top tracks or artists on spotify." />
 			</Head>
 
 			<div className={styles.squarePageContainer}>

@@ -144,7 +144,8 @@
 	font-size: 25px;
 	font-weight: bold;
 	text-align: center;
-	word-wrap: break-word;
+	word-break: break-word;
+/*	word-wrap: break-word;*/
 }
 .displayCircleHeader h4{
 	font-size: 20px;

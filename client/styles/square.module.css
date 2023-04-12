@@ -129,8 +129,152 @@
 	}
 }
 
+.squareInterface{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	margin: 40px 0px;
+}
+
 /* SQUARE CARD */
 .squareCard{
 	display: flex;
-	justify-content: center
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	width: 400px;
+	height: auto;
+	background: rgb(24, 24, 24);
+}
+
+/* TOP */
+.squareTop{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.squareLeft{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 250px;
+	height: 250px;
+}
+.squareRight{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.squareRTop{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 150px;
+	height: 150px;
+}
+.squareRBottom{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.squareRBLeft{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.squareRBLTop, .squareRBLBottom{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+	height: 50px;
+}
+.squareRBRight{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100px;
+	height: 100px;
+}
+
+/* BOTTOM  */
+.squareBottom{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100%;
+	padding: 0px 10px 20px 10px;
+}
+
+.squareBottom .contentHeader{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 5px 0px;
+	width: 100%;
+	padding: 20px 0px;
+}
+.squareBottom .contentHeader h3{
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+	word-break: break-word;
+}
+.squareBottom .contentHeader h4{
+	font-size: 20px;
+	color: rgb(167, 167, 167);
+}
+
+.squareBottom .content{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 10px 0px;
+	width: 80%;
+	margin: 10px 0px 20px 0px;
+}
+.squareBottom .content .artistItem{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 0px 12px; 
+}
+.squareBottom .content .artistItem h3{
+	font-size: 23px;
+	color: rgb(205, 205, 205);
+}
+.squareBottom .content .artistItem h4{
+	font-size: 23px;
+	word-break: break-word;
+	color: rgb(205, 205, 205);
+}
+
+/* CARD FOOTER */
+.squareBottom .footer{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px 0px;
+	margin: 10px 0px;
+}
+
+.squareBottom .footer h4{
+	font-size: 20px;
+	color: rgb(167, 167, 167);
 }

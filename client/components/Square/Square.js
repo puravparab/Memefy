@@ -14,7 +14,7 @@ const Square = () => {
 	const [render, setRender] = useState(false)
 
 	// What items should be displayed
-	const [category, setCategory] = useState('tracks')
+	const [category, setCategory] = useState('artists')
 	const [range, setRange] = useState('six')
 
 	// Change categories
@@ -50,7 +50,7 @@ const Square = () => {
 
 		// If top items are already stored
 		if (top_items && user_profile){
-			renderCard(top_items)
+			renderCard(top_items, user_profile)
 			setRender(true)
 		}
 		else{
@@ -71,7 +71,7 @@ const Square = () => {
 								let user_profile = JSON.parse(sessionStorage.getItem('user_profile'))
 								// If user profile are already stored
 								if (user_profile){
-									renderCard(top_items)
+									renderCard(top_items, user_profile)
 									setRender(true)
 								}
 								else{
@@ -98,7 +98,7 @@ const Square = () => {
 	}
 
 	// Render Card
-	const renderCard = (data) => {
+	const renderCard = (data, user_profile) => {
 		let renderData
 		const noData = () => {return  (<div className={styles.noItemText}>Listen to more songs!</div>)}
 
@@ -106,43 +106,43 @@ const Square = () => {
 		// LAST MONTH
 		if (data.artists.short_term.length == 0) {renderData = noData}
 		else{
-			renderData = () => {return (<ArtistCard data={data.artists.short_term}/>)}
+			renderData = () => {return (<ArtistCard data={data.artists.short_term} user_profile={user_profile} range={"Last Month"} />)}
 		}
 		setArtistCard1(renderData)
 
 		// LAST SIX MONTHS
 		if (data.artists.medium_term.length == 0) {renderData = noData}
 		else{
-			renderData = () => {return (<ArtistCard data={data.artists.medium_term}/>)}
+			renderData = () => {return (<ArtistCard data={data.artists.medium_term} user_profile={user_profile} range={"Last 6 Months"}/>)}
 		}
 		setArtistCard2(renderData)
 
 		// ALL TIME
 		if (data.artists.long_term.length == 0) {renderData = noData}
 		else{
-			renderData = () => {return (<ArtistCard data={data.artists.long_term} />)}
+			renderData = () => {return (<ArtistCard data={data.artists.long_term} user_profile={user_profile} range={"All Time"}/>)}
 		}
 		setArtistCard3(renderData)
 
-		// TOP ARTISTS
+		// TOP TRACKS
 		// LAST MONTH
 		if (data.tracks.short_term.length == 0) {renderData = noData}
 		else{
-			renderData = () => {return (<TrackCard data={data.tracks.short_term} />)}
+			renderData = () => {return (<TrackCard data={data.tracks.short_term} range={"Last Month"}/>)}
 		}
 		setTrackCard1(renderData)
 
 		// LAST SIX MONTHS
 		if (data.tracks.medium_term.length == 0) {renderData = noData}
 		else{
-			renderData = () => {return (<TrackCard data={data.tracks.medium_term} />)}
+			renderData = () => {return (<TrackCard data={data.tracks.medium_term} range={"Last 6 Months"}/>)}
 		}
 		setTrackCard2(renderData)
 
 		// ALL TIME
 		if (data.tracks.long_term.length == 0) {renderData = noData}
 		else{
-			renderData = () => {return (<TrackCard data={data.tracks.long_term} />)}
+			renderData = () => {return (<TrackCard data={data.tracks.long_term} range={"All Time"} />)}
 		}
 		setTrackCard3(renderData)
 	}
@@ -163,19 +163,21 @@ const Square = () => {
 						</div>
 					</div>
 
-					{category == 'artists'?
-						<>
-							{range == 'one' && ArtistCard1}
-							{range == 'six' && ArtistCard2}
-							{range == 'all' && ArtistCard3}
-						</>
-						:
-						<>
-							{range == 'one' && TrackCard1}
-							{range == 'six' && TrackCard2}
-							{range == 'all' && TrackCard3}
-						</>
-					}
+					<div className={styles.squareInterface}>
+						{category == 'artists'?
+							<>
+								{range == 'one' && ArtistCard1}
+								{range == 'six' && ArtistCard2}
+								{range == 'all' && ArtistCard3}
+							</>
+							:
+							<>
+								{range == 'one' && TrackCard1}
+								{range == 'six' && TrackCard2}
+								{range == 'all' && TrackCard3}
+							</>
+						}
+					</div>
 				</>
 				: ""
 			}
