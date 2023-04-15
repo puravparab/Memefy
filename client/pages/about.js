@@ -31,9 +31,9 @@ const About = () => {
 					</p>
 				</div>
 				<div className={styles.aboutSection}>
-					<h3>Memefy List or Top Tracks/Artists don't appear!</h3>
+					<h3>Memefy List or Top Tracks/Artists don&apos;t appear!</h3>
 					<p>
-						If your Memefy List or top tracks/artists does not appear this could either be an issue with our servers or Spotify's API service. 
+						If your Memefy List or top tracks/artists does not appear this could either be an issue with our servers or Spotify&apos;s API service. 
 						Either way your best option is to clear cookies and other site data and refresh the website until your preferred content appears.
 					</p>
 				</div>
@@ -53,9 +53,9 @@ const About = () => {
 
 				<h2>Privacy Policy</h2>
 				<div className={styles.aboutSection}>
-					<p>Memefy uses Spotify's API to obtain the user's profile, top tracks and artists.</p>
+					<p>Memefy uses Spotify&apos;s API to obtain the user&apos;s profile, top tracks and artists.</p>
 					<p>None of the data provided to us by Spotify is stored or shared with third parties.</p>
-					<p>If you want to revoke Memefy's permissions, you can visit (
+					<p>If you want to revoke Memefy&apos;s permissions, you can visit (
 						<a href="https://www.spotify.com/account/apps">https://www.spotify.com/account/apps</a> 
 						) and manually remove Memefy from your allowed apps on Spotify.
 					</p>
