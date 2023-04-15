@@ -13,7 +13,7 @@ const Navbar = () => {
 		<div className={styles.navbar}>
 			<Link href='/' className={isActiveLink('/')}>Top</Link>
 			<Link href='/list' className={isActiveLink('/list')}>List</Link>
-			<Link href='/circle' className={isActiveLink('/circle')}>Inner circle</Link>
+			{/* <Link href='/circle' className={isActiveLink('/circle')}>Inner circle</Link> */}
 			{/* <Link href='/iceberg'>Iceberg</Link> */}
 			{/* <Link href='/other'>Templates</Link> */}
 		</div>

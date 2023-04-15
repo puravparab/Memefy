@@ -3,5 +3,26 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin: 50px 0px;
+	margin: 100px 0px 30px 0px;
+}
+
+.footerLinks{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 0px 20px;
+	margin: 10px 0px;
+}
+
+.footerLinks a, .footerLinks p{
+	font-size: 20px;
+	font-weight: bold;
+	color: rgb(204,204,204);
+}
+.footerLinks p{	
+	font-weight: 500;
+}
+.footerLinks a:hover{
+	color: white;
 }
