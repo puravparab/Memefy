@@ -30,21 +30,30 @@ export const ArtistCard = (props) => {
 		setTop(() => {
 			return (
 				<div className={styles.squareTop}>
+					{/* ITEM 1 */}
 					<img src={artistList[0].image} className={styles.squareLeft} alt={artistList[0].name + " image"}/>
 
 					{artistList.length > 1 &&
 						<div className={styles.squareRight}>
+							{/* ITEM 2 */}
 							<img src={artistList[1].image} className={styles.squareRTop} alt={artistList[1].name + " image"}/>
 
 							{artistList.length > 2 &&
 								<div className={styles.squareRBottom}>
+									{/* ITEM 3 */}
+									<img src={artistList[2].image}  className={styles.squareRBRight} alt={artistList[2].name + " image"}/>
+
 									{artistList.length > 3 &&
 										<div className={styles.squareRBLeft}>
-											{artistList.length == 5 && <img src={artistList[4].image} className={styles.squareRBLTop} alt={artistList[4].name + " image"}/>}
+											{/* ITEM 4 */}
 											<img src={artistList[3].image} className={styles.squareRBLBottom} alt={artistList[3].name + " image"}/>
+
+											{artistList.length == 5 && 
+												// ITEM 5
+												<img src={artistList[4].image} className={styles.squareRBLTop} alt={artistList[4].name + " image"}/>
+											}
 										</div>
 									}
-									<img src={artistList[2].image}  className={styles.squareRBRight} alt={artistList[2].name + " image"}/>
 								</div>
 							}
 						</div>
@@ -124,21 +133,31 @@ export const TrackCard = (props) => {
 		setTop(() => {
 			return (
 				<div className={styles.squareTop}>
+					{/* ITEM 1 */}
 					<img src={trackList[0].image} className={styles.squareLeft} alt={trackList[0].name + " image"}/>
 
 					{trackList.length > 1 &&
 						<div className={styles.squareRight}>
+							{/* ITEM 2 */}
 							<img src={trackList[1].image} className={styles.squareRTop} alt={trackList[1].name + " image"}/>
 
 							{trackList.length > 2 &&
 								<div className={styles.squareRBottom}>
+									{/* ITEM 3 */}
+									<img src={trackList[2].image}  className={styles.squareRBRight} alt={trackList[2].name + " image"}/>
+
 									{trackList.length > 3 &&
 										<div className={styles.squareRBLeft}>
-											{trackList.length == 5 && <img src={trackList[4].image} className={styles.squareRBLTop} alt={trackList[4].name + " image"}/>}
+											{/* ITEM 4 */}
 											<img src={trackList[3].image} className={styles.squareRBLBottom} alt={trackList[3].name + " image"}/>
+
+											{trackList.length == 5 && 
+												// ITEM 5
+												<img src={trackList[4].image} className={styles.squareRBLTop} alt={trackList[4].name + " image"}/>
+											}
 										</div>
 									}
-									<img src={trackList[2].image}  className={styles.squareRBRight} alt={trackList[2].name + " image"}/>
+			
 								</div>
 							}
 						</div>
