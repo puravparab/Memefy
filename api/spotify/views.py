@@ -13,7 +13,7 @@ from . import utils
 # Request authorization from spotify
 @api_view(['GET'])
 def authenticate(request, format=None):
-	auth_scopes = 'user-top-read user-read-email user-read-private'
+	auth_scopes = 'user-top-read user-read-private'
 	url = Request('GET', 'https://accounts.spotify.com/authorize',
 		params={
 			'client_id': settings.SPOTIFY_CLIENT_ID,
