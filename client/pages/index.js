@@ -32,17 +32,17 @@ const Home = () => {
 				<title>Memefy</title>
 				<meta 
 					name="description" 
-					content="Create your spotify inner circle. Find out you top tracks and artists on spotify."
+					content="Create and share your spotify List. Find out your top tracks and artists on spotify."
 				/>
 				{/* <link rel="canonical" href="/" /> */}
 				<meta property="og:title" content=">Memefy" />
 				<meta property="og:url" content="https://memefy.app" />
 				<meta 
 					property="og:description" 
-					content="Create your spotify inner circle. Find out you top tracks and artists on spotify."
+					content="Create and share your spotify List. Find out your top tracks and artists on spotify."
 				/>
 				<meta name="twitter:site" content="https://memefy.app" />
-				<meta name="twitter:description" content="Create your spotify inner circle. Find out you top tracks and artists on spotify." />
+				<meta name="twitter:description" content="Create and share your spotify List. Find out your top tracks and artists on spotify." />
 			</Head>
 
 			<div className={styles.homeContainer}>

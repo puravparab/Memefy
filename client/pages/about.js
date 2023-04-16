@@ -18,10 +18,10 @@ const About = () => {
 					<meta property="og:url" content="https://memefy.app/about" />
 					<meta 
 						property="og:description" 
-						content="Create your spotify inner circle. Find out you top tracks and artists on spotify."
+						content="Create and share your spotify List. Find out your top tracks and artists on spotify."
 					/>
 					<meta name="twitter:site" content="https://memefy.app/about" />
-					<meta name="twitter:description" content="Create your spotify inner circle. Find out you top tracks and artists on spotify." />
+					<meta name="twitter:description" content="Create and share your spotify List. Find out your top tracks and artists on spotify." />
 				</Head>
 
 			<div className={styles.homeContainer}>
