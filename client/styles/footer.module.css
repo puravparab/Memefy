@@ -16,9 +16,9 @@
 }
 
 .footerLinks a, .footerLinks p{
-	font-size: 20px;
-	font-weight: bold;
-	color: rgb(204,204,204);
+	font-size: 17px;
+	font-weight: 500;
+	color: rgb(124, 124, 124);
 }
 .footerLinks p{	
 	font-weight: 500;

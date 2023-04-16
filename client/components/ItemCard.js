@@ -1,11 +1,14 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/topitems.module.css'
 
 export const ArtistCard = ( props ) => {
 	return (
 		<div className={styles.artistCard} key={props.id}>
 			<div className={styles.artistImg}>
-				<Image src={props.artist.image} width={150} height={150} alt={props.artist.name + " image"}/>
+				<Link href={props.artist.artist_url} target="_blank">
+					<Image src={props.artist.image} width={150} height={150} alt={props.artist.name + " image"}/>
+				</Link>
 			</div>
 			<div className={styles.artistContent}>
 				<h4>{props.id + 1}.</h4>

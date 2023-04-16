@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import Link from 'next/link'
 import getConfig from 'next/config';
 import axios from 'axios'
 import { parse } from 'cookie';
@@ -103,7 +104,9 @@ const TopItems = () => {
 			renderData = data.artists.short_term.map((artist, id) => {
 				return (
 					<div className={styles.topItemCard} key={id}>
-						<Image src={artist.image} width={100} height={100} alt={artist.name + " image"}/>
+						<Link href={artist.artist_url} target="_blank">
+							<Image src={artist.image} width={100} height={100} alt={artist.name + " image"}/>
+						</Link>
 					</div>
 				)
 			})
@@ -125,7 +128,9 @@ const TopItems = () => {
 			renderData = data.artists.medium_term.map((artist, id) => {
 				return (
 					<div className={styles.topItemCard} key={id}>
-						<Image src={artist.image} width={100} height={100} alt={artist.name + " image"}/>
+						<Link href={artist.artist_url} target="_blank">
+							<Image src={artist.image} width={100} height={100} alt={artist.name + " image"}/>
+						</Link>
 					</div>
 				)
 			})
@@ -147,7 +152,9 @@ const TopItems = () => {
 			renderData = data.artists.long_term.map((artist, id) => {
 				return (
 					<div className={styles.topItemCard} key={id}>
-						<Image src={artist.image} width={100} height={100} alt={artist.name + " image"}/>
+						<Link href={artist.artist_url} target="_blank">
+							<Image src={artist.image} width={100} height={100} alt={artist.name + " image"}/>
+						</Link>
 					</div>
 				)
 			})
