@@ -238,11 +238,17 @@
 	font-size: 16px;
 	font-weight: bold;
 }
+.trackCardContent .trackDetails h4:hover{
+	color: rgb(30, 215, 96);
+}
 .trackCardContent .trackDetails h5{
 	font-size: 13px;
 	font-weight: 400;
 	color: rgb(231,231,231);
 	padding: 5px 0px 0px 0px;
+}
+.trackCardContent .trackDetails h5 a:hover{
+	color: rgb(30, 215, 96);
 }
 
 @media (max-width: 450px){

@@ -21,8 +21,8 @@ export const ArtistCard = ( props ) => {
 export const TrackCard = ( props ) => {
 	// Iterate through artists of this track
 	let artists = props.track.artists.map((artist, j) => {
-		if (j == 0){return (<>{artist.name}</>)}
-		else{return(<>, {artist.name} </>)}
+		if (j == 0){return (<> <Link href={artist.artist_url} target="_blank">{artist.name}</Link> </>)}
+		else{return(<>, <Link href={artist.artist_url} target="_blank">{artist.name}</Link> </>)}
 	})
 	return (
 		<div className={styles.trackCard} key={props.id}>
@@ -34,7 +34,9 @@ export const TrackCard = ( props ) => {
 			<div className={styles.trackCardContent}>
 				<div className={styles.trackRank}>{props.id + 1}.</div>
 				<div className={styles.trackDetails}>
-					<h4>{props.track.name}</h4>
+					<Link href={props.track.song_url} target="_blank">
+						<h4>{props.track.name}</h4>
+					</Link>
 					<h5>{artists}</h5>
 				</div>
 			</div>
