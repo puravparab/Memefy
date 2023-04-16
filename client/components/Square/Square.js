@@ -255,7 +255,7 @@ const Square = () => {
 							}
 						</div>
 
-						{imageDataUrl && <img src={imageDataUrl} className={styles.displayImage} alt={"user's top " + {category}}/>}
+						{imageDataUrl && <img src={imageDataUrl} className={styles.displayImage} alt={"user's top " + category}/>}
 
 						<div className={styles.btnContainer}>
 							{!imageGenerated && <button onClick={handleImageGeneration} className={styles.generateBtn}>Generate</button>}

@@ -178,7 +178,7 @@ const TopItems = () => {
 				return (
 					<div className={styles.topItemCard} key={id} 
 						onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}>
-						<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}/>
+						<Image src={track.image} width={100} height={100} alt={track.name + " image"}/>
 					</div>
 				)
 			})
@@ -201,7 +201,7 @@ const TopItems = () => {
 				return (
 					<div className={styles.topItemCard} key={id} 
 						onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}>
-						<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}/>
+						<Image src={track.image} width={100} height={100} alt={track.name + " image"}/>
 					</div>
 				)
 			})
@@ -224,7 +224,7 @@ const TopItems = () => {
 				return (
 					<div className={styles.topItemCard} key={id} 
 						onMouseEnter={() => playAudio(track.preview_url)} onMouseLeave={() => stopAudio()}>
-						<Image src={track.image} width={100} height={100} alt={track.artists.name + " image"}/>
+						<Image src={track.image} width={100} height={100} alt={track.name + " image"}/>
 					</div>
 				)
 			})
