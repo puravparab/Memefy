@@ -58,9 +58,9 @@ const About = () => {
 					</div>
 					<div className={styles.aboutSection}>
 						<h3>How do I log out of my current spotify account</h3>
-						<p>You can visit this site (
+						<p>You can click the logout button at the bottom of the page or visit this site (
 							<a href="https://www.spotify.com/account">https://www.spotify.com/account</a>
-							) and log out of your spotify account.
+							) to log out of your spotify account.
 						</p>
 					</div>
 					<div className={styles.aboutSection}>

@@ -20,6 +20,9 @@
 	font-weight: 500;
 	color: rgb(124, 124, 124);
 }
+.footerLinks a{
+	cursor: pointer;
+}
 .footerLinks p{	
 	font-weight: 500;
 }
