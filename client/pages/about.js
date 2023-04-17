@@ -36,7 +36,7 @@ const About = () => {
 					<h2>FAQ</h2>
 					<div className={styles.aboutSection}>
 						<h3>How does Memefy get your listening data?</h3>
-						<p>Memefy uses the Spotify API to get your toip tracks and artists.</p>
+						<p>Memefy uses the Spotify API to get your top tracks and artists.</p>
 					</div>
 					<div className={styles.aboutSection}>
 						<h3>How do I download my lists?</h3>
@@ -67,6 +67,13 @@ const About = () => {
 						<h3>How do I contact the team?</h3>
 						<p>
 							For media/business inquires, feedback or feature requests you can contact our team at <a href="mailto:memefyteam@gmail.com">memefyteam@gmail.com</a>
+						</p>
+					</div>
+					<div className={styles.aboutSection}>
+						<h3>How do I disconnect Memefy from my allowed apps?</h3>
+						<p>
+							if you would like to revoke Memefy&apos;s permissions, you can visit (<a href="https://www.spotify.com/account/apps">https://www.spotify.com/account/apps</a>) and click "REMOVE ACCESS" on Memefy. 
+							You can also read Spotify&apos;s guide to do so (<a href="https://support.spotify.com/article/spotify-on-other-apps/">https://support.spotify.com/article/spotify-on-other-apps/</a>)
 						</p>
 					</div>
 
