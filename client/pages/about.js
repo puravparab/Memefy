@@ -72,7 +72,7 @@ const About = () => {
 					<div className={styles.aboutSection}>
 						<h3>How do I disconnect Memefy from my allowed apps?</h3>
 						<p>
-							if you would like to revoke Memefy&apos;s permissions, you can visit (<a href="https://www.spotify.com/account/apps">https://www.spotify.com/account/apps</a>) and click "REMOVE ACCESS" on Memefy. 
+							if you would like to revoke Memefy&apos;s permissions, you can visit (<a href="https://www.spotify.com/account/apps">https://www.spotify.com/account/apps</a>) and click &quot;REMOVE ACCESS&quot; on Memefy. 
 							You can also read Spotify&apos;s guide to do so (<a href="https://support.spotify.com/article/spotify-on-other-apps/">https://support.spotify.com/article/spotify-on-other-apps/</a>)
 						</p>
 					</div>
