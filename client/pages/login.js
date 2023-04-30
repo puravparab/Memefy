@@ -13,7 +13,7 @@ const LoginPage = () => {
 					content="Create and share your spotify List. Find out your top tracks and artists on spotify."
 				/>
 				{/* <link rel="canonical" href="/" /> */}
-				<meta property="og:title" content=">Memefy" />
+				<meta property="og:title" content="Memefy" />
 				<meta property="og:url" content="https://memefy.app/login" />
 				<meta 
 					property="og:description" 

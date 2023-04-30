@@ -36,7 +36,7 @@ const SquarePage = () => {
 					content="Create and share your top tracks or artists on spotify."
 				/>
 				{/* <link rel="canonical" href="/" /> */}
-				<meta property="og:title" content=">List | Memefy" />
+				<meta property="og:title" content="List | Memefy" />
 				<meta property="og:url" content="https://memefy.app/list" />
 				<meta 
 					property="og:description" 

@@ -36,7 +36,7 @@ const CirclePage = () => {
 					content="Create and share your spotify inner circle."
 				/>
 				{/* <link rel="canonical" href="/" /> */}
-				<meta property="og:title" content=">Your inner circle | Memefy" />
+				<meta property="og:title" content="Your inner circle | Memefy" />
 				<meta property="og:url" content="https://memefy.app/circle" />
 				<meta 
 					property="og:description" 

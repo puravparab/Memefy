@@ -14,7 +14,7 @@ const About = () => {
 						content=""
 					/>
 					{/* <link rel="canonical" href="/" /> */}
-					<meta property="og:title" content=">Memefy" />
+					<meta property="og:title" content="Memefy" />
 					<meta property="og:url" content="https://memefy.app/about" />
 					<meta 
 						property="og:description" 
