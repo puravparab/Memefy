@@ -46,8 +46,8 @@ DJANGO_SETTINGS_MODULE=server.settings.base
 ALLOWED_HOSTS=0.0.0.0 localhost 127.0.0.1
 SPOTIFY_CLIENT_ID=
 SPOTIFY_CLIENT_SECRET=
-SPOTIFY_REDIRECT_URI=<Client Domain>/api/callback"
-CORS_ALLOWED_ORIGINS=http://localhost:3000 http://127.0.0.1:3000
+SPOTIFY_REDIRECT_URI=<Client Domain>/api/callback
+CORS_ALLOWED_ORIGINS=http://localhost:3000 http://127.0.0.1:3000"
 > .env
 ```
 Run a docker container
@@ -66,7 +66,7 @@ Create environment variables
 echo "CLIENT_ID=<Spotify>
 CLIENT_SECRET=<Spotify>
 REDIRECT_URI=<Client Domain>/api/callback
-SERVER_URL=<Server Domain>/
+SERVER_URL=<Server Domain>/" > .env.local
 ```
 Run client
 ```
