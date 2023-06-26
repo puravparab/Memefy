@@ -29,20 +29,20 @@ const Home = () => {
 	return (
 		<>
 			<Head>
-				<title>Memefy</title>
+				<title>Memefy | Discover your favorite artists and songs on Spotify!</title>
 				<meta 
 					name="description" 
-					content="Create and share your spotify List. Find out your top tracks and artists on spotify."
+					content="Discover your favorite artists and songs on Spotify with Memefy! Explore your most listened to tracks and artists, and enjoy previews of each song. "
 				/>
 				{/* <link rel="canonical" href="/" /> */}
-				<meta property="og:title" content="Memefy" />
+				<meta property="og:title" content="Memefy | Discover your favorite artists and songs on Spotify!" />
 				<meta property="og:url" content="https://memefy.app" />
 				<meta 
 					property="og:description" 
-					content="Create and share your spotify List. Find out your top tracks and artists on spotify."
+					content="Discover your favorite artists and songs on Spotify with Memefy! Explore your most listened to tracks and artists, and enjoy previews of each song. "
 				/>
 				<meta name="twitter:site" content="https://memefy.app" />
-				<meta name="twitter:description" content="Create and share your spotify List. Find out your top tracks and artists on spotify." />
+				<meta name="twitter:description" content="Discover your favorite artists and songs on Spotify with Memefy! Explore your most listened to tracks and artists, and enjoy previews of each song. " />
 			</Head>
 
 			<div className={styles.homeContainer}>

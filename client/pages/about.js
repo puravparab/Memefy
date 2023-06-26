@@ -11,17 +11,17 @@ const About = () => {
 					<title>About | Memefy</title>
 					<meta 
 						name="description" 
-						content=""
+						content="Create and share a personalized list of your favorite songs and artists with Memefy. Discover your favorite artists and songs on Spotify with Memefy! Explore your most listened to tracks and artists, and enjoy previews of each song."
 					/>
 					{/* <link rel="canonical" href="/" /> */}
-					<meta property="og:title" content="Memefy" />
+					<meta property="og:title" content="About | Memefy" />
 					<meta property="og:url" content="https://memefy.app/about" />
 					<meta 
 						property="og:description" 
-						content="Create and share your spotify List. Find out your top tracks and artists on spotify."
+						content="Create and share a personalized list of your favorite songs and artists with Memefy. Discover your favorite artists and songs on Spotify with Memefy! Explore your most listened to tracks and artists, and enjoy previews of each song."
 					/>
 					<meta name="twitter:site" content="https://memefy.app/about" />
-					<meta name="twitter:description" content="Create and share your spotify List. Find out your top tracks and artists on spotify." />
+					<meta name="twitter:description" content="Create and share a personalized list of your favorite songs and artists with Memefy. Discover your favorite artists and songs on Spotify with Memefy! Explore your most listened to tracks and artists, and enjoy previews of each song." />
 				</Head>
 
 			<div className={styles.homeContainer}>

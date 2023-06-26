@@ -29,21 +29,21 @@ const SquarePage = () => {
 	return (
 		<>
 			<Head>
-				<title>List | Memefy</title>
+				<title>Memefy List | Download your Spotify List</title>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" id="viewportMeta" />
 				<meta 
 					name="description" 
-					content="Create and share your top tracks or artists on spotify."
+					content="Create and share a personalized list of your favorite songs and artists with Memefy."
 				/>
 				{/* <link rel="canonical" href="/" /> */}
-				<meta property="og:title" content="List | Memefy" />
+				<meta property="og:title" content="Memefy List | Download your Spotify List" />
 				<meta property="og:url" content="https://memefy.app/list" />
 				<meta 
 					property="og:description" 
-					content="Create and share your top tracks or artists on spotify."
+					content="Create and share a personalized list of your favorite songs and artists with Memefy."
 				/>
 				<meta name="twitter:site" content="https://memefy.app/list" />
-				<meta name="twitter:description" content="Create and share your top tracks or artists on spotify." />
+				<meta name="twitter:description" content="Create and share a personalized list of your favorite songs and artists with Memefy." />
 			</Head>
 
 			<div className={styles.squarePageContainer}>

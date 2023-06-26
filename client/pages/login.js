@@ -7,17 +7,17 @@ const LoginPage = () => {
 	return (
 		<>
 			<Head>
-				<title>Login | Memefy</title>
+				<title>Memefy Login | Discover and Download Your favorite Spotify songs and artists</title>
 				<meta 
 					name="description" 
-					content="Create and share your spotify List. Find out your top tracks and artists on spotify."
+					content="Create and share a personalized list of your favorite songs and artists with Memefy. Discover your favorite artists and songs on Spotify with Memefy! Explore your most listened to tracks and artists, and enjoy previews of each song."
 				/>
 				{/* <link rel="canonical" href="/" /> */}
-				<meta property="og:title" content="Memefy" />
+				<meta property="og:title" content="Memefy Login | Discover and Download Your favorite Spotify songs and artists" />
 				<meta property="og:url" content="https://memefy.app/login" />
 				<meta 
 					property="og:description" 
-					content="Create and share your spotify List. Find out your top tracks and artists on spotify.."
+					content="Create and share a personalized list of your favorite songs and artists with Memefy. Discover your favorite artists and songs on Spotify with Memefy! Explore your most listened to tracks and artists, and enjoy previews of each song."
 				/>
 			</Head>
 
